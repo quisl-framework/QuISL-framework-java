@@ -1,12 +1,13 @@
 package org.quist.qubits.operators;
 
 import org.quist.qubits.Qubit;
+import org.quist.qubits.math.ComplexNumber;
 
 public class PauliX extends QuantumOperator {
 
-    private Qubit qubit;
+    private final Qubit qubit;
 
-    private double[][] pauliXMatrix;
+    private ComplexNumber[][] pauliXMatrix;
 
     public PauliX(Qubit qubit) {
 
@@ -32,33 +33,32 @@ public class PauliX extends QuantumOperator {
     @Override
     public void setup() {
 
-        this.pauliXMatrix = new double[][]
-                            { {0.0, 1.0},
-                              {1.0, 0.0} };
+        this.pauliXMatrix = new ComplexNumber[][]
+                            { { new ComplexNumber(0.0, 0.0), new ComplexNumber(1.0, 0.0) },
+                              { new ComplexNumber(1.0, 0.0), new ComplexNumber(0.0, 0.0) } };
 
     }
 
     @Override
     public void apply() {
 
-        float[] qubitAmplitudes = this.qubit.getAmplitudes();
+        ComplexNumber[] qubitAmplitudes = this.qubit.getAmplitudes();
 
 
-        float[] newQubitAmplitudes = new float[2];
+        ComplexNumber[] newQubitAmplitudes = new ComplexNumber[2];
 
 
         newQubitAmplitudes[0] =
-                (float) (
-                                qubitAmplitudes[0] * this.pauliXMatrix[0][0] +
-                                qubitAmplitudes[1] * this.pauliXMatrix[1][0]
-                        );
+                ComplexNumber.add(
+                        ComplexNumber.multiply(qubitAmplitudes[0], this.pauliXMatrix[0][0]),
+                        ComplexNumber.multiply(qubitAmplitudes[1], this.pauliXMatrix[1][0])
+                );
 
         newQubitAmplitudes[1] =
-                (float) (
-                                qubitAmplitudes[0] * this.pauliXMatrix[0][1] +
-                                qubitAmplitudes[1] * this.pauliXMatrix[1][1]
-                        );
-
+                ComplexNumber.add(
+                        ComplexNumber.multiply(qubitAmplitudes[0], this.pauliXMatrix[0][1]),
+                        ComplexNumber.multiply(qubitAmplitudes[1], this.pauliXMatrix[1][1])
+                );
 
         this.qubit.setAmplitudes(newQubitAmplitudes);
 
