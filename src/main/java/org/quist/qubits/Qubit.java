@@ -1,7 +1,7 @@
 package org.quist.qubits;
 
-import org.quist.qubits.operators.PauliX;
-import org.quist.qubits.operators.QuantumOperator;
+import org.quist.qubits.math.ComplexNumber;
+import org.quist.qubits.operators.*;
 import org.quist.qubits.geometry.sphere.BlochSphere;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class Qubit {
 
     private List<QuantumOperator> quantumOperatorsList;
 
-    private float[] amplitudes;
+    private ComplexNumber[] amplitudes;
 
     private boolean measurementPerformed;
     private int finalOutcomeAfterMeasurement;
@@ -49,9 +49,9 @@ public class Qubit {
     }
 
     private void setupAmplitudes() {
-        this.amplitudes = new float[2];
-        this.amplitudes[0] = 1.0f;
-        this.amplitudes[1] = 0.0f;
+        this.amplitudes = new ComplexNumber[2];
+        this.amplitudes[0] = new ComplexNumber(1.0f, 0.0f);
+        this.amplitudes[1] = new ComplexNumber(0.0f, 0.0f);
     }
 
     public static Integer getGroundState() {
@@ -86,7 +86,7 @@ public class Qubit {
         this.quantumOperatorsList = quantumOperatorsList;
     }
 
-    public float[] getAmplitudes() {
+    public ComplexNumber[] getAmplitudes() {
         return this.amplitudes;
     }
 
@@ -98,7 +98,7 @@ public class Qubit {
         this.measurementPerformed = true;
     }
 
-    public void setAmplitudes(float[] amplitudes) {
+    public void setAmplitudes(ComplexNumber[] amplitudes) {
         this.amplitudes = amplitudes;
     }
 
@@ -107,7 +107,10 @@ public class Qubit {
     }
 
     public void applyIdentity() {
-        // Empty/Opaque Method
+
+        QuantumOperator quantumOperator = new Identity(this);
+        this.quantumOperatorsList.add(quantumOperator);
+
     }
 
     public void applyPauliX() {
@@ -119,9 +122,15 @@ public class Qubit {
 
     public void applyPauliY() {
 
+        QuantumOperator quantumOperator = new PauliY(this);
+        this.quantumOperatorsList.add(quantumOperator);
+
     }
 
     public void applyPauliZ() {
+
+        QuantumOperator quantumOperator = new PauliZ(this);
+        this.quantumOperatorsList.add(quantumOperator);
 
     }
 
@@ -145,8 +154,8 @@ public class Qubit {
         this.setMeasurementPerformed();
 
 
-        float probabilitiesForOutcomeNo0 = (float) Math.pow(this.amplitudes[0], 2.0);
-        float probabilitiesForOutcomeNo1 = (float) Math.pow(this.amplitudes[1], 2.0);
+        float probabilitiesForOutcomeNo0 = (float) Math.pow(this.amplitudes[0].modulus(), 2.0);
+        float probabilitiesForOutcomeNo1 = (float) Math.pow(this.amplitudes[1].modulus(), 2.0);
 
         if (probabilitiesForOutcomeNo0 == 1.0f) {
 
@@ -168,7 +177,7 @@ public class Qubit {
 
         this.printOutcomesProbabilities();
 
-        System.out.println(String.format("\nThe final Outcome for the measured Qubit #%d is: %d\n\n",
+        System.out.println(String.format("The final Outcome for the measured Qubit #%d is: %d\n\n",
                                         this.id, this.finalOutcomeAfterMeasurement));
 
     }
@@ -176,7 +185,7 @@ public class Qubit {
     public void printOutcomesProbabilities() {
 
         System.out.println(String.format("Qubit #%d => Probability(|0⟩) = %.3f | Probability(|1⟩) = %.3f\n\n", this.id,
-                                         Math.pow(this.amplitudes[0], 2.0), Math.pow(this.amplitudes[1], 2.0)));
+                                         Math.pow(this.amplitudes[0].modulus(), 2.0), Math.pow(this.amplitudes[1].modulus(), 2.0)));
 
     }
 
