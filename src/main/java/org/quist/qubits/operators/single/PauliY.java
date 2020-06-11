@@ -1,7 +1,8 @@
-package org.quist.qubits.operators;
+package org.quist.qubits.operators.single;
 
 import org.quist.qubits.Qubit;
 import org.quist.qubits.math.ComplexNumber;
+import org.quist.qubits.operators.QuantumOperator;
 
 public class PauliY extends QuantumOperator {
 

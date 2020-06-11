@@ -1,4 +1,4 @@
-package org.quist.qubits.operators;
+package org.quist.qubits.operators.single;
 
 import org.junit.jupiter.api.Test;
 import org.quist.qubits.Qubit;
