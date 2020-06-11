@@ -2,6 +2,7 @@ package org.quist.qubits.operators;
 
 import org.junit.jupiter.api.Test;
 import org.quist.qubits.Qubit;
+import org.quist.qubits.math.ComplexNumber;
 
 import static org.junit.runner.JUnitCore.runClasses;
 
@@ -18,12 +19,12 @@ class PauliXTest {
 
         Qubit qubit = new Qubit(1L);
 
-        float[] qubitAmplitudes;
+        ComplexNumber[] qubitAmplitudes;
 
         qubitAmplitudes = qubit.getAmplitudes();
 
-        assert (qubitAmplitudes[0] == 1.0);
-        assert (qubitAmplitudes[1] == 0.0);
+        assert (qubitAmplitudes[0].modulus() == 1.0);
+        assert (qubitAmplitudes[1].modulus() == 0.0);
 
 
         qubit.applyPauliX();
@@ -33,8 +34,8 @@ class PauliXTest {
 
         qubitAmplitudes = qubit.getAmplitudes();
 
-        assert (qubitAmplitudes[0] == 0.0);
-        assert (qubitAmplitudes[1] == 1.0);
+        assert (qubitAmplitudes[0].modulus() == 0.0);
+        assert (qubitAmplitudes[1].modulus() == 1.0);
 
         assert (qubit.getFinalOutcomeAfterMeasurement() == 1);
 
@@ -45,12 +46,12 @@ class PauliXTest {
 
         Qubit qubit = new Qubit(2L);
 
-        float[] qubitAmplitudes;
+        ComplexNumber[] qubitAmplitudes;
 
         qubitAmplitudes = qubit.getAmplitudes();
 
-        assert (qubitAmplitudes[0] == 1.0);
-        assert (qubitAmplitudes[1] == 0.0);
+        assert (qubitAmplitudes[0].modulus() == 1.0);
+        assert (qubitAmplitudes[1].modulus() == 0.0);
 
 
         qubit.applyPauliX();
@@ -62,8 +63,8 @@ class PauliXTest {
 
         qubitAmplitudes = qubit.getAmplitudes();
 
-        assert (qubitAmplitudes[0] == 1.0);
-        assert (qubitAmplitudes[1] == 0.0);
+        assert (qubitAmplitudes[0].modulus() == 1.0);
+        assert (qubitAmplitudes[1].modulus() == 0.0);
 
         assert (qubit.getFinalOutcomeAfterMeasurement() == 0);
 
