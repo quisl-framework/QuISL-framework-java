@@ -3,6 +3,7 @@ package org.quist.qubits;
 import org.quist.qubits.math.ComplexNumber;
 import org.quist.qubits.operators.*;
 import org.quist.qubits.geometry.sphere.BlochSphere;
+import org.quist.qubits.operators.single.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,6 +136,9 @@ public class Qubit {
     }
 
     public void applyHadamard() {
+
+        QuantumOperator quantumOperator = new Hadamard(this);
+        this.quantumOperatorsList.add(quantumOperator);
 
     }
 
