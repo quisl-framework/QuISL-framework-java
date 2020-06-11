@@ -1,2 +1,2 @@
-# QuIST (Quantum Information Science Toolbox)
+# QUIST (QUantum Information Science Toolbox)
 
