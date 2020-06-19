@@ -1,21 +1,17 @@
-package org.quist.units.qubits.operators.single;
+package org.quist.units.qubits.operators.single.pauli;
 
 import org.quist.units.qubits.Qubit;
 import org.quist.units.qubits.math.algebra.pauli.PauliMatrix;
 import org.quist.units.qubits.math.complex.ComplexNumber;
-import org.quist.units.qubits.operators.QuantumOperator;
+import org.quist.units.qubits.operators.single.SingleQuantumOperator;
 
-public class PauliX extends QuantumOperator {
-
-    private final Qubit qubit;
+public class PauliX extends SingleQuantumOperator {
 
     private ComplexNumber[][] pauliXMatrix;
 
-    public PauliX(Qubit qubit) {
+    public PauliX(Qubit qubit) throws Exception {
 
         super(qubit, PauliMatrix.getPauliXMatrix());
-
-        this.qubit = qubit;
 
         this.setup();
 
@@ -33,7 +29,17 @@ public class PauliX extends QuantumOperator {
     }
 
     @Override
-    public void setup() {
+    public void setup() throws Exception {
+
+        if (this.getNumQubits() != this.getQubits().length) {
+
+            if (this.getNumQubits() != 1) {
+
+                throw new Exception();
+
+            }
+
+        }
 
         this.pauliXMatrix = this.getQuantumOperatorMatrix();
 
@@ -42,6 +48,5 @@ public class PauliX extends QuantumOperator {
     public ComplexNumber[][] getPauliXMatrix() {
         return this.pauliXMatrix;
     }
-
 
 }
