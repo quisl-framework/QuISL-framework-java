@@ -2,7 +2,7 @@ package org.quist.units.qubits.operators.single;
 
 import org.junit.jupiter.api.Test;
 import org.quist.units.qubits.Qubit;
-import org.quist.units.qubits.math.ComplexNumber;
+import org.quist.units.qubits.math.complex.ComplexNumber;
 
 import static org.junit.runner.JUnitCore.runClasses;
 
