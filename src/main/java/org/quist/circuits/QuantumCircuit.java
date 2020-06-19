@@ -20,7 +20,7 @@ public class QuantumCircuit {
     }
 
 
-    public void id(int numQuantumRegister) {
+    public void id(int numQuantumRegister) throws Exception {
 
         List<Qubit> quantumRegisterQubits = this.quantumRegisterList.get(numQuantumRegister).getQubits();
 
@@ -32,7 +32,7 @@ public class QuantumCircuit {
 
     }
 
-    public void x(int numQuantumRegister) {
+    public void x(int numQuantumRegister) throws Exception {
 
         List<Qubit> quantumRegisterQubits = this.quantumRegisterList.get(numQuantumRegister).getQubits();
 
@@ -44,7 +44,7 @@ public class QuantumCircuit {
 
     }
 
-    public void y(int numQuantumRegister) {
+    public void y(int numQuantumRegister) throws Exception {
 
         List<Qubit> quantumRegisterQubits = this.quantumRegisterList.get(numQuantumRegister).getQubits();
 
@@ -56,7 +56,7 @@ public class QuantumCircuit {
 
     }
 
-    public void z(int numQuantumRegister) {
+    public void z(int numQuantumRegister) throws Exception {
 
         List<Qubit> quantumRegisterQubits = this.quantumRegisterList.get(numQuantumRegister).getQubits();
 
@@ -68,7 +68,7 @@ public class QuantumCircuit {
 
     }
 
-    public void h(int numQuantumRegister) {
+    public void h(int numQuantumRegister) throws Exception {
 
         List<Qubit> quantumRegisterQubits = this.quantumRegisterList.get(numQuantumRegister).getQubits();
 

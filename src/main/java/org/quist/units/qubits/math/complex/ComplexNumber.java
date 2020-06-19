@@ -148,6 +148,24 @@ public class ComplexNumber {
     }
 
     /**
+     * Adds two <code>ComplexNumber</code>.
+     *
+     * @param z1 the first <code>ComplexNumber</code>.
+     *
+     * @param z2 the second <code>ComplexNumber</code>.
+     *
+     * @param z3 the third <code>ComplexNumber</code>.
+     *
+     * @param z4 the fourth <code>ComplexNumber</code>.
+     *
+     * @return the resultant <code>ComplexNumber</code> (z1 + z2 + z3 + z4).
+     */
+    public static ComplexNumber add(ComplexNumber z1, ComplexNumber z2, ComplexNumber z3, ComplexNumber z4) {
+        return new ComplexNumber(z1.getRe() + z2.getRe() + z3.getRe() + z4.getRe(),
+                                z1.getIm() + z2.getIm() + z3.getIm() + z4.getIm());
+    }
+
+    /**
      * Subtracts one <code>ComplexNumber</code> from another.
      * @param z1 the first <code>ComplexNumber</code>.
      * @param z2 the second <code>ComplexNumber</code>.

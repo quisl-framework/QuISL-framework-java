@@ -1,12 +1,21 @@
 package org.quist.units.qubits;
 
 import org.quist.units.qubits.math.complex.ComplexNumber;
-import org.quist.units.qubits.operators.*;
 import org.quist.units.qubits.geometry.sphere.BlochSphere;
-import org.quist.units.qubits.operators.single.*;
+import org.quist.units.qubits.operators.QuantumOperator;
+import org.quist.units.qubits.operators.multi.MultiQuantumOperator;
+import org.quist.units.qubits.operators.multi.swap.Swap;
+import org.quist.units.qubits.operators.single.SingleQuantumOperator;
+import org.quist.units.qubits.operators.single.hadamard.Hadamard;
+import org.quist.units.qubits.operators.single.pauli.Identity;
+import org.quist.units.qubits.operators.single.pauli.PauliX;
+import org.quist.units.qubits.operators.single.pauli.PauliY;
+import org.quist.units.qubits.operators.single.pauli.PauliZ;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Qubit {
 
@@ -17,7 +26,11 @@ public class Qubit {
 
     private BlochSphere blochSphere;
 
-    private List<QuantumOperator> quantumOperatorsList;
+    private List<QuantumOperator> allQuantumOperatorsList;
+
+    private List<QuantumOperator> pendingQuantumOperatorsList;
+
+    private Map<Integer, Qubit[]> qubitsUsedInMultiQuantumOperatorsList;
 
     private ComplexNumber[] amplitudes;
 
@@ -33,7 +46,8 @@ public class Qubit {
 
         this.setup();
 
-        this.quantumOperatorsList = new ArrayList<>();
+        this.allQuantumOperatorsList = new ArrayList<>();
+        this.pendingQuantumOperatorsList = new ArrayList<>();
 
     }
 
@@ -52,8 +66,8 @@ public class Qubit {
 
     private void setupAmplitudes() {
         this.amplitudes = new ComplexNumber[2];
-        this.amplitudes[0] = new ComplexNumber(1.0f, 0.0f);
-        this.amplitudes[1] = new ComplexNumber(0.0f, 0.0f);
+        this.amplitudes[0] = ComplexNumber.real_one_img_zero;
+        this.amplitudes[1] = ComplexNumber.real_zero_img_zero;
     }
 
     public static Integer getGroundState() {
@@ -80,12 +94,20 @@ public class Qubit {
         this.blochSphere = blochSphere;
     }
 
-    public List<QuantumOperator> getQuantumOperatorsList() {
-        return quantumOperatorsList;
+    public List<QuantumOperator> getAllQuantumOperatorsList() {
+        return this.allQuantumOperatorsList;
     }
 
-    public void setQuantumOperatorsList(List<QuantumOperator> quantumOperatorsList) {
-        this.quantumOperatorsList = quantumOperatorsList;
+    public void setAllQuantumOperatorsList(List<QuantumOperator> allQuantumOperatorsList) {
+        this.allQuantumOperatorsList = allQuantumOperatorsList;
+    }
+
+    public List<QuantumOperator> getPendingQuantumOperatorsList() {
+        return this.pendingQuantumOperatorsList;
+    }
+
+    public void setPendingQuantumOperatorsList(List<QuantumOperator> pendingQuantumOperatorsList) {
+        this.pendingQuantumOperatorsList = pendingQuantumOperatorsList;
     }
 
     public ComplexNumber[] getAmplitudes() {
@@ -108,56 +130,156 @@ public class Qubit {
         return this.finalOutcomeAfterMeasurement;
     }
 
-    public void applyIdentity() {
+    public void applyIdentity() throws Exception {
 
-        QuantumOperator quantumOperator = new Identity(this);
-        this.quantumOperatorsList.add(quantumOperator);
-
-    }
-
-    public void applyPauliX() {
-
-        QuantumOperator quantumOperator = new PauliX(this);
-        this.quantumOperatorsList.add(quantumOperator);
+        SingleQuantumOperator singleQuantumOperator = new Identity(this);
+        this.allQuantumOperatorsList.add(singleQuantumOperator);
+        this.pendingQuantumOperatorsList.add(singleQuantumOperator);
 
     }
 
-    public void applyPauliY() {
+    public void applyPauliX() throws Exception {
 
-        QuantumOperator quantumOperator = new PauliY(this);
-        this.quantumOperatorsList.add(quantumOperator);
-
-    }
-
-    public void applyPauliZ() {
-
-        QuantumOperator quantumOperator = new PauliZ(this);
-        this.quantumOperatorsList.add(quantumOperator);
+        SingleQuantumOperator singleQuantumOperator = new PauliX(this);
+        this.allQuantumOperatorsList.add(singleQuantumOperator);
+        this.pendingQuantumOperatorsList.add(singleQuantumOperator);
 
     }
 
-    public void applyHadamard() {
+    public void applyPauliY() throws Exception {
 
-        QuantumOperator quantumOperator = new Hadamard(this);
-        this.quantumOperatorsList.add(quantumOperator);
+        SingleQuantumOperator singleQuantumOperator = new PauliY(this);
+        this.allQuantumOperatorsList.add(singleQuantumOperator);
+        this.pendingQuantumOperatorsList.add(singleQuantumOperator);
 
     }
 
-    public void measure() {
+    public void applyPauliZ() throws Exception {
 
-        for(QuantumOperator quantumOperator : quantumOperatorsList) {
+        SingleQuantumOperator singleQuantumOperator = new PauliZ(this);
+        this.allQuantumOperatorsList.add(singleQuantumOperator);
+        this.pendingQuantumOperatorsList.add(singleQuantumOperator);
 
-            System.out.println(String.format("It was applied a Quantum Operator (%s) to the Qubit #%d!!!\n",
-                                             quantumOperator.getName(), this.id));
+    }
 
-            quantumOperator.apply();
+    public void applyHadamard() throws Exception {
+
+        SingleQuantumOperator singleQuantumOperator = new Hadamard(this);
+        this.allQuantumOperatorsList.add(singleQuantumOperator);
+        this.pendingQuantumOperatorsList.add(singleQuantumOperator);
+
+    }
+
+    public Qubit[] applySwap(Qubit otherQubit) throws Exception {
+
+        this.performPendingAppliedQuantumOperators();
+        otherQubit.performPendingAppliedQuantumOperators();
+
+        Swap swapMultiQuantumOperator = new Swap(new Qubit[]{ this, otherQubit });
+
+        this.allQuantumOperatorsList.add(swapMultiQuantumOperator);
+        otherQubit.allQuantumOperatorsList.add(swapMultiQuantumOperator);
+
+        System.out.println(String.format("It was applied a Quantum Operator (%s) to the Qubits #%d and #%d!!!\n\n",
+                swapMultiQuantumOperator.getName(), this.getId(), otherQubit.getId()));
+
+        swapMultiQuantumOperator.doProductCross();
+
+        ComplexNumber[] swappedQubitProductAmplitudes;
+
+        swappedQubitProductAmplitudes = swapMultiQuantumOperator.getQubitProductAmplitudes();
+
+        System.out.println(String.format("Multi-Qubit System [ #%d , #%d ], " +
+                        "before the Quantum Operator (%s) be performed:\n=> " +
+                        "Probability(|00⟩) = %.3f | Probability(|01⟩) = %.3f | " +
+                        "Probability(|10⟩) = %.3f | Probability(|11⟩) = %.3f\n\n",
+                        this.id, otherQubit.id,
+                        swapMultiQuantumOperator.getName(),
+                        Math.pow(swappedQubitProductAmplitudes[0].modulus(), 2.0),
+                        Math.pow(swappedQubitProductAmplitudes[1].modulus(), 2.0),
+                        Math.pow(swappedQubitProductAmplitudes[2].modulus(), 2.0),
+                        Math.pow(swappedQubitProductAmplitudes[3].modulus(), 2.0)));
+
+        swapMultiQuantumOperator.apply();
+
+        swappedQubitProductAmplitudes = swapMultiQuantumOperator.getQubitProductAmplitudes();
+
+        System.out.println(String.format("Multi-Qubit System [ #%d , #%d ], " +
+                        "after the Quantum Operator (%s) be performed:\n=> " +
+                        "Probability(|00⟩) = %.3f | Probability(|01⟩) = %.3f | " +
+                        "Probability(|10⟩) = %.3f | Probability(|11⟩) = %.3f\n\n",
+                        otherQubit.id, this.id,
+                        swapMultiQuantumOperator.getName(),
+                        Math.pow(swappedQubitProductAmplitudes[0].modulus(), 2.0),
+                        Math.pow(swappedQubitProductAmplitudes[1].modulus(), 2.0),
+                        Math.pow(swappedQubitProductAmplitudes[2].modulus(), 2.0),
+                        Math.pow(swappedQubitProductAmplitudes[3].modulus(), 2.0)));
+
+        System.out.println(String.format("The order of the Qubits, before the Quantum Operator (%s) be performed:\n",
+                swapMultiQuantumOperator.getName()));
+
+        this.printOutcomesProbabilities();
+        otherQubit.printOutcomesProbabilities();
+
+        Qubit[] qubitsSwapped = Swap.performSwap(this, otherQubit);
+
+        System.out.println(String.format("The order of the Qubits, after the Quantum Operator (%s) be performed:\n",
+                swapMultiQuantumOperator.getName()));
+
+        qubitsSwapped[0].printOutcomesProbabilities();
+        qubitsSwapped[1].printOutcomesProbabilities();
+
+        return qubitsSwapped;
+
+    }
+
+    public void swapQubitObject(Qubit otherQubit) {
+
+        this.id = otherQubit.id;
+        this.blochSphere = otherQubit.blochSphere;
+
+        this.allQuantumOperatorsList = otherQubit.allQuantumOperatorsList;
+        this.pendingQuantumOperatorsList = otherQubit.pendingQuantumOperatorsList;
+
+    }
+
+    public void performPendingAppliedQuantumOperators() throws Exception {
+
+        for(QuantumOperator quantumOperator : this.pendingQuantumOperatorsList) {
+
+            if(quantumOperator instanceof SingleQuantumOperator) {
+
+                System.out.println(String.format("It was applied a Quantum Operator (%s) to the Qubit #%d!!!\n",
+                        quantumOperator.getName(), this.id));
+
+                ((SingleQuantumOperator) quantumOperator).apply();
+
+            }
+            else {
+
+                if(quantumOperator.getNumQubits() == 2) {
+
+                    System.out.println(String.format("It was applied a Quantum Operator (%s) to the Qubits #%d and #%d!!!\n",
+                            quantumOperator.getName(), quantumOperator.getQubits()[0].id,
+                            quantumOperator.getQubits()[1].id));
+
+                }
+
+            }
+
             this.printOutcomesProbabilities();
 
         }
 
+        this.pendingQuantumOperatorsList.clear();
+
+    }
+
+    public void measure() throws Exception {
+
+        this.performPendingAppliedQuantumOperators();
 
         this.setMeasurementPerformed();
-
 
         float probabilitiesForOutcomeNo0 = (float) Math.pow(this.amplitudes[0].modulus(), 2.0);
         float probabilitiesForOutcomeNo1 = (float) Math.pow(this.amplitudes[1].modulus(), 2.0);

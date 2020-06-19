@@ -5,23 +5,33 @@ import org.quist.units.qubits.math.complex.ComplexNumber;
 
 public abstract class QuantumOperator {
 
-    private Qubit qubit;
+    private Integer numQubits;
+
+    private Qubit[] qubits;
 
     private ComplexNumber[][] quantumOperatorMatrix;
 
-    public QuantumOperator(Qubit qubit, ComplexNumber[][] quantumOperatorMatrix) {
+    private boolean quantumOperatorApplied;
 
-        this.qubit = qubit;
+    public QuantumOperator(Integer numQubits, Qubit[] qubits, ComplexNumber[][] quantumOperatorMatrix) {
+
+        this.numQubits = numQubits;
+        this.qubits = qubits;
         this.quantumOperatorMatrix = quantumOperatorMatrix;
+        this.quantumOperatorApplied = false;
 
     }
 
-    public Qubit getQubit() {
-        return this.qubit;
+    public Integer getNumQubits() {
+        return this.numQubits;
     }
 
-    public void setQubit(Qubit qubit) {
-        this.qubit = qubit;
+    public Qubit[] getQubits() {
+        return this.qubits;
+    }
+
+    public void setQubits(Qubit[] qubits) {
+        this.qubits = qubits;
     }
 
     public ComplexNumber[][] getQuantumOperatorMatrix() {
@@ -36,29 +46,12 @@ public abstract class QuantumOperator {
 
     public abstract String getInfo();
 
-    public abstract void setup();
+    public boolean isQuantumOperatorApplied() {
+        return this.quantumOperatorApplied;
+    }
 
-    public void apply() {
-
-        ComplexNumber[] qubitAmplitudes = this.qubit.getAmplitudes();
-
-
-        ComplexNumber[] newQubitAmplitudes = new ComplexNumber[2];
-
-
-        newQubitAmplitudes[0] =
-                ComplexNumber.add(
-                        ComplexNumber.multiply(qubitAmplitudes[0], this.quantumOperatorMatrix[0][0]),
-                        ComplexNumber.multiply(qubitAmplitudes[1], this.quantumOperatorMatrix[1][0])
-                );
-
-        newQubitAmplitudes[1] =
-                ComplexNumber.add(
-                        ComplexNumber.multiply(qubitAmplitudes[0], this.quantumOperatorMatrix[0][1]),
-                        ComplexNumber.multiply(qubitAmplitudes[1], this.quantumOperatorMatrix[1][1])
-                );
-
-        this.qubit.setAmplitudes(newQubitAmplitudes);
+    public void setQuantumOperatorApplied(boolean quantumOperatorApplied) {
+        this.quantumOperatorApplied = quantumOperatorApplied;
     }
 
 }
