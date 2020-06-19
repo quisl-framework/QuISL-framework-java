@@ -10,9 +10,15 @@
 
 ## Contacts
 
+### General
+#### E-mails
+* [quantum.information.science@gmail.com](mailto:quantum.information.science@gmail.com)
+
+## Other Contacts
 ### Rúben André Barreiro
 #### E-mails
-* [ruben.barreiro.92@gmail.com](mailto:ruben.andre.letra.barreiro@gmail.com)
+* [quantum.information.science@gmail.com](mailto:quantum.information.science@gmail.com)
+* [ruben.andre.letra.barreiro@gmail.com](mailto:ruben.andre.letra.barreiro@gmail.com)
 * [r.barreiro@campus.fct.unl.pt](mailto:r.barreiro@campus.fct.unl.pt)
 
 ## Portfolios/Blogs and Git Hosting/Repository Services
