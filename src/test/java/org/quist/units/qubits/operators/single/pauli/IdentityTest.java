@@ -1,4 +1,4 @@
-package org.quist.units.qubits.operators.single;
+package org.quist.units.qubits.operators.single.pauli;
 
 import org.junit.jupiter.api.Test;
 import org.quist.units.qubits.Qubit;
@@ -15,7 +15,7 @@ class IdentityTest {
     }
 
     @Test
-    void testOneIdentity() {
+    void testOneIdentity() throws Exception {
 
         Qubit qubit = new Qubit(1L);
 
