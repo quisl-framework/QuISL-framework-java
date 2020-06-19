@@ -1,4 +1,4 @@
-package org.quist.units.qubits.math;
+package org.quist.units.qubits.math.complex;
 
 /**
  * The <code>ComplexNumber</code> is a class which implements complex numbers in Java.
@@ -32,6 +32,21 @@ public class ComplexNumber {
      * Used in <code>format(int)</code> to format the complex number as R.cis(theta), where theta is arg(z).
      */
     public static final int RCIS = 1;
+
+    /**
+     * The <code>ComplexNumber</code> i (z = 0 + 0i).
+     */
+    public static final ComplexNumber real_zero_img_zero = new ComplexNumber(0.0, 0.0);
+
+    /**
+     * The <code>ComplexNumber</code> i (z = 1 + 1i).
+     */
+    public static final ComplexNumber real_one_img_zero = new ComplexNumber(1.0, 0.0);
+
+    /**
+     * The <code>ComplexNumber</code> i (z = -1 + 1i).
+     */
+    public static final ComplexNumber real_neg_one_img_zero = new ComplexNumber(1.0, 0.0);
 
     /**
      * The <code>ComplexNumber</code> i (z = 0 + 1i).
