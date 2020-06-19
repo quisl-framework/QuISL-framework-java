@@ -12,10 +12,8 @@
 
 ### Rúben André Barreiro
 #### E-mails
-* [ruben.barreiro.92@gmail.com](mailto:ruben.barreiro.92@gmail.com)
+* [ruben.barreiro.92@gmail.com](mailto:ruben.andre.letra.barreiro@gmail.com)
 * [r.barreiro@campus.fct.unl.pt](mailto:r.barreiro@campus.fct.unl.pt)
-* [up201808917@fe.up.pt](mailto:up201808917@fe.up.pt)
-* [up201808917@g.uporto.pt](mailto:up201808917@g.uporto.pt)
 
 ## Portfolios/Blogs and Git Hosting/Repository Services
 
