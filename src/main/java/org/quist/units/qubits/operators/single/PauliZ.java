@@ -1,7 +1,8 @@
 package org.quist.units.qubits.operators.single;
 
 import org.quist.units.qubits.Qubit;
-import org.quist.units.qubits.math.ComplexNumber;
+import org.quist.units.qubits.math.algebra.pauli.PauliMatrix;
+import org.quist.units.qubits.math.complex.ComplexNumber;
 import org.quist.units.qubits.operators.QuantumOperator;
 
 public class PauliZ extends QuantumOperator {
@@ -12,7 +13,7 @@ public class PauliZ extends QuantumOperator {
 
     public PauliZ(Qubit qubit) {
 
-        super(qubit);
+        super(qubit, PauliMatrix.getPauliZMatrix());
 
         this.qubit = qubit;
 
@@ -33,36 +34,11 @@ public class PauliZ extends QuantumOperator {
     @Override
     public void setup() {
 
-        this.pauliZMatrix = new ComplexNumber[][]
-                      { { new ComplexNumber(1.0, 0.0), new ComplexNumber(0.0, 0.0) },
-                        { new ComplexNumber(0.0, 0.0), new ComplexNumber(-1.0, 0.0) } };
+        this.pauliZMatrix = this.getQuantumOperatorMatrix();
 
     }
 
-    @Override
-    public void apply() {
-
-        ComplexNumber[] qubitAmplitudes = this.qubit.getAmplitudes();
-
-
-        ComplexNumber[] newQubitAmplitudes = new ComplexNumber[2];
-
-
-        newQubitAmplitudes[0] =
-                ComplexNumber.add(
-                        ComplexNumber.multiply(qubitAmplitudes[0], this.pauliZMatrix[0][0]),
-                        ComplexNumber.multiply(qubitAmplitudes[1], this.pauliZMatrix[1][0])
-                );
-
-        newQubitAmplitudes[1] =
-                ComplexNumber.add(
-                        ComplexNumber.multiply(qubitAmplitudes[0], this.pauliZMatrix[0][1]),
-                        ComplexNumber.multiply(qubitAmplitudes[1], this.pauliZMatrix[1][1])
-                );
-
-        this.qubit.setAmplitudes(newQubitAmplitudes);
-
+    public ComplexNumber[][] getPauliZMatrix() {
+        return this.pauliZMatrix;
     }
-
-
 }

@@ -1,7 +1,8 @@
 package org.quist.units.qubits.operators.single;
 
 import org.quist.units.qubits.Qubit;
-import org.quist.units.qubits.math.ComplexNumber;
+import org.quist.units.qubits.math.algebra.pauli.PauliMatrix;
+import org.quist.units.qubits.math.complex.ComplexNumber;
 import org.quist.units.qubits.operators.QuantumOperator;
 
 public class Identity extends QuantumOperator {
@@ -12,7 +13,7 @@ public class Identity extends QuantumOperator {
 
     public Identity(Qubit qubit) {
 
-        super(qubit);
+        super(qubit, PauliMatrix.getPauliIMatrix());
 
         this.qubit = qubit;
 
