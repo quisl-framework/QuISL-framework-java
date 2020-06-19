@@ -3,7 +3,7 @@ package org.quist.registers.classical;
 import org.quist.registers.Register;
 import org.quist.units.bits.Bit;
 import org.quist.units.qubits.Qubit;
-import org.quist.units.qubits.math.ComplexNumber;
+import org.quist.units.qubits.math.complex.ComplexNumber;
 
 import java.util.Arrays;
 
