@@ -17,7 +17,6 @@
 ## Other Contacts
 ### Rúben André Barreiro
 #### E-mails
-* [quantum.information.science@gmail.com](mailto:quantum.information.science@gmail.com)
 * [ruben.andre.letra.barreiro@gmail.com](mailto:ruben.andre.letra.barreiro@gmail.com)
 * [r.barreiro@campus.fct.unl.pt](mailto:r.barreiro@campus.fct.unl.pt)
 
