@@ -1,4 +1,4 @@
-package org.quist.units.qubits.operators.single;
+package org.quist.units.qubits.operators.single.hadamard;
 
 import org.junit.jupiter.api.Test;
 import org.quist.units.qubits.Qubit;
@@ -15,7 +15,7 @@ class HadamardTest {
     }
 
     @Test
-    void testOneHadamard() {
+    void testOneHadamard() throws Exception {
 
         Qubit qubit = new Qubit(1L);
 
@@ -40,7 +40,7 @@ class HadamardTest {
     }
 
     @Test
-    void testTwoHadamard() {
+    void testTwoHadamard() throws Exception {
 
         Qubit qubit = new Qubit(2L);
 

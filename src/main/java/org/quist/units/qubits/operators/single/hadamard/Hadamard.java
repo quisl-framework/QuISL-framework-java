@@ -1,21 +1,17 @@
-package org.quist.units.qubits.operators.single;
+package org.quist.units.qubits.operators.single.hadamard;
 
 import org.quist.units.qubits.Qubit;
 import org.quist.units.qubits.math.algebra.hadamard.HadamardMatrix;
 import org.quist.units.qubits.math.complex.ComplexNumber;
-import org.quist.units.qubits.operators.QuantumOperator;
+import org.quist.units.qubits.operators.single.SingleQuantumOperator;
 
-public class Hadamard extends QuantumOperator {
-
-    private final Qubit qubit;
+public class Hadamard extends SingleQuantumOperator {
 
     private ComplexNumber[][] hadamardMatrix;
 
-    public Hadamard(Qubit qubit) {
+    public Hadamard(Qubit qubit) throws Exception {
 
         super(qubit, HadamardMatrix.getHadamardMatrix());
-
-        this.qubit = qubit;
 
         this.setup();
 
@@ -33,14 +29,20 @@ public class Hadamard extends QuantumOperator {
     }
 
     @Override
-    public void setup() {
+    public void setup() throws Exception {
+
+        if( ( this.getNumQubits() != this.getQubits().length ) && ( this.getNumQubits() != 1 ) )  {
+            throw new Exception();
+        }
 
         this.hadamardMatrix = this.getQuantumOperatorMatrix();
 
     }
 
     public ComplexNumber[][] getHadamardMatrix() {
+
         return this.hadamardMatrix;
+
     }
 
 }
