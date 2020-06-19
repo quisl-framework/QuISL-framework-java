@@ -1,6 +1,6 @@
 package org.quist.units.qubits;
 
-import org.quist.units.qubits.math.ComplexNumber;
+import org.quist.units.qubits.math.complex.ComplexNumber;
 import org.quist.units.qubits.operators.*;
 import org.quist.units.qubits.geometry.sphere.BlochSphere;
 import org.quist.units.qubits.operators.single.*;
