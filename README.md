@@ -2,7 +2,7 @@
 
 ## Description
 
-> A project based in **_Quantum Computing_** and **_Quantum Information Science_**. This project was built using [**_Java_**](https://www.java.com/) and [**_JUnit_**](https://junit.org/). The [**_QuIST (Quantum Information Science Toolbox)_**]() is a _toolbox/framework_, to allow to study the several aspects and topics of **_Quantum Computing_** and **_Quantum Information Science_**, using a **_Object-Oriented Language_**, such as [**_Java_**](https://www.java.com/).
+> A project based in **_Quantum Computing_** and **_Quantum Information Science_**. This project was built using [**_Java_**](https://www.java.com/) and [**_JUnit_**](https://junit.org/). The [**_QuIST (Quantum Information Science Toolbox)_**]() is a [**_Java_**](https://www.java.com/) **_Library (or Toolbox/Framework)_**, _which will act as_ **_Simulator_** _of this new technology_, as also, _will allow to build and study_ **_Quantum Circuits_**, **_Quantum Algorithms_**, among many others, using a **_Object-Oriented Language_**, such as [**_Java_**](https://www.java.com/) **_Programming Language_**.
 
 ## Contributors
 
