@@ -1,4 +1,4 @@
-package org.quisl.framework.java.units.qubits.math.linearalgebra.swap;
+package org.quisl.framework.java.units.qubits.math.linearalgebra.matrix.multi.two.swap;
 
 import org.quisl.framework.java.units.qubits.math.complex.ComplexNumber;
 import org.quisl.framework.java.units.qubits.math.linearalgebra.Matrix;

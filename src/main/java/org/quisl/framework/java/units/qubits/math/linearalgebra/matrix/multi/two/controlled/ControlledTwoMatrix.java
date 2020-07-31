@@ -1,11 +1,11 @@
-package org.quisl.framework.java.units.qubits.math.linearalgebra.controlled;
+package org.quisl.framework.java.units.qubits.math.linearalgebra.matrix.multi.two.controlled;
 
 import org.quisl.framework.java.units.qubits.math.complex.ComplexNumber;
 import org.quisl.framework.java.units.qubits.math.linearalgebra.Matrix;
 
-public class ControlledMatrix extends Matrix {
+public class ControlledTwoMatrix extends Matrix {
 
-    public ControlledMatrix() {
+    public ControlledTwoMatrix() {
 
     }
 
