@@ -1,7 +1,7 @@
 package org.quisl.framework.java.units.qubits.operators.multi.swap;
 
 import org.quisl.framework.java.units.qubits.Qubit;
-import org.quisl.framework.java.units.qubits.math.linear.algebra.swap.SWAPMatrix;
+import org.quisl.framework.java.units.qubits.math.linearalgebra.swap.SWAPMatrix;
 import org.quisl.framework.java.units.qubits.math.complex.ComplexNumber;
 import org.quisl.framework.java.units.qubits.operators.multi.MultiQuantumOperator;
 
