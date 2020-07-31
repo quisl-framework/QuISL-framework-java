@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="QuIST (Quantum Information Science Toolbox)" />
         <module name="quist-framework" />
+        <module name="QuISL-framework-java" />
       </profile>
     </annotationProcessing>
   </component>
