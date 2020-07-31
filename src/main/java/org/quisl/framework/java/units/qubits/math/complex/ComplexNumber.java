@@ -46,7 +46,7 @@ public class ComplexNumber {
     /**
      * The <code>ComplexNumber</code> i (z = -1 + 1i).
      */
-    public static final ComplexNumber real_neg_one_img_zero = new ComplexNumber(1.0, 0.0);
+    public static final ComplexNumber real_neg_one_img_zero = new ComplexNumber(-1.0, 0.0);
 
     /**
      * The <code>ComplexNumber</code> i (z = 0 + 1i).

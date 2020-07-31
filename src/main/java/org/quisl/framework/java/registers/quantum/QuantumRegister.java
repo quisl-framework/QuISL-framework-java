@@ -1,7 +1,7 @@
 package org.quisl.framework.java.registers.quantum;
 
-import org.quisl.framework.java.units.qubits.Qubit;
 import org.quisl.framework.java.registers.Register;
+import org.quisl.framework.java.units.qubits.Qubit;
 
 import java.util.ArrayList;
 import java.util.List;

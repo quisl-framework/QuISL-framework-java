@@ -5,11 +5,11 @@ import org.quisl.framework.java.units.qubits.math.complex.ComplexNumber;
 import org.quisl.framework.java.units.qubits.operators.QuantumOperator;
 import org.quisl.framework.java.units.qubits.operators.multi.swap.Swap;
 import org.quisl.framework.java.units.qubits.operators.single.SingleQuantumOperator;
+import org.quisl.framework.java.units.qubits.operators.single.hadamard.Hadamard;
+import org.quisl.framework.java.units.qubits.operators.single.pauli.Identity;
 import org.quisl.framework.java.units.qubits.operators.single.pauli.PauliX;
 import org.quisl.framework.java.units.qubits.operators.single.pauli.PauliY;
 import org.quisl.framework.java.units.qubits.operators.single.pauli.PauliZ;
-import org.quisl.framework.java.units.qubits.operators.single.hadamard.Hadamard;
-import org.quisl.framework.java.units.qubits.operators.single.pauli.Identity;
 
 import java.util.ArrayList;
 import java.util.List;
