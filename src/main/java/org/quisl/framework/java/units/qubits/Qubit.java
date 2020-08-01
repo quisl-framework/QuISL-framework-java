@@ -1,15 +1,15 @@
 package org.quisl.framework.java.units.qubits;
 
-import org.quisl.framework.java.units.qubits.geometry.sphere.BlochSphere;
-import org.quisl.framework.java.units.qubits.math.complex.ComplexNumber;
-import org.quisl.framework.java.units.qubits.operators.QuantumOperator;
-import org.quisl.framework.java.units.qubits.operators.multi.swap.Swap;
-import org.quisl.framework.java.units.qubits.operators.single.SingleQuantumOperator;
-import org.quisl.framework.java.units.qubits.operators.single.hadamard.Hadamard;
-import org.quisl.framework.java.units.qubits.operators.single.pauli.Identity;
-import org.quisl.framework.java.units.qubits.operators.single.pauli.PauliX;
-import org.quisl.framework.java.units.qubits.operators.single.pauli.PauliY;
-import org.quisl.framework.java.units.qubits.operators.single.pauli.PauliZ;
+import org.quisl.framework.java.math.geometry.spheres.BlochSphere;
+import org.quisl.framework.java.math.complex.ComplexNumber;
+import org.quisl.framework.java.instructions.operators.quantum.QuantumOperator;
+import org.quisl.framework.java.instructions.operators.quantum.multi.swap.Swap;
+import org.quisl.framework.java.instructions.operators.quantum.single.SingleQuantumOperator;
+import org.quisl.framework.java.instructions.operators.quantum.single.hadamard.Hadamard;
+import org.quisl.framework.java.instructions.operators.quantum.single.pauli.Identity;
+import org.quisl.framework.java.instructions.operators.quantum.single.pauli.PauliX;
+import org.quisl.framework.java.instructions.operators.quantum.single.pauli.PauliY;
+import org.quisl.framework.java.instructions.operators.quantum.single.pauli.PauliZ;
 
 import java.util.ArrayList;
 import java.util.List;
