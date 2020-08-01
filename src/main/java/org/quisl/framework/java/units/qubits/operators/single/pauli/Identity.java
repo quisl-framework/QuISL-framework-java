@@ -2,7 +2,7 @@ package org.quisl.framework.java.units.qubits.operators.single.pauli;
 
 import org.quisl.framework.java.units.qubits.Qubit;
 import org.quisl.framework.java.units.qubits.math.complex.ComplexNumber;
-import org.quisl.framework.java.units.qubits.math.linearalgebra.matrix.single.pauli.PauliMatrix;
+import org.quisl.framework.java.units.qubits.math.linearalgebra.matrix.operators.single.pauli.PauliMatrix;
 import org.quisl.framework.java.units.qubits.operators.single.SingleQuantumOperator;
 
 public class Identity extends SingleQuantumOperator {
