@@ -39,9 +39,19 @@ public class ComplexNumber {
     public static final ComplexNumber real_zero_img_zero = new ComplexNumber(0.0, 0.0);
 
     /**
-     * The <code>ComplexNumber</code> i (z = 1 + 1i).
+     * The <code>ComplexNumber</code> i (z = 1 + 0i).
      */
     public static final ComplexNumber real_one_img_zero = new ComplexNumber(1.0, 0.0);
+
+    /**
+     * The <code>ComplexNumber</code> i (z = 1 + 1i).
+     */
+    public static final ComplexNumber real_one_img_one = new ComplexNumber(1.0, 1.0);
+
+    /**
+     * The <code>ComplexNumber</code> i (z = 1 + 1i).
+     */
+    public static final ComplexNumber real_one_img_neg_one = new ComplexNumber(1.0, -1.0);
 
     /**
      * The <code>ComplexNumber</code> i (z = -1 + 1i).
