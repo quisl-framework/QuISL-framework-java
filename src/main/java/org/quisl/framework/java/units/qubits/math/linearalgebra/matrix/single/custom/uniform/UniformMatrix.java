@@ -1,4 +1,4 @@
-package org.quisl.framework.java.units.qubits.math.linearalgebra.matrix.single.uniform;
+package org.quisl.framework.java.units.qubits.math.linearalgebra.matrix.single.custom.uniform;
 
 import org.quisl.framework.java.units.qubits.math.complex.ComplexNumber;
 import org.quisl.framework.java.units.qubits.math.linearalgebra.Matrix;

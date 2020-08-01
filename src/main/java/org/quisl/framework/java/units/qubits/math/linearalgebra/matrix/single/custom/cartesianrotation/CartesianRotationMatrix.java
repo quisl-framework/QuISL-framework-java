@@ -1,4 +1,4 @@
-package org.quisl.framework.java.units.qubits.math.linearalgebra.matrix.single.cartesianrotation;
+package org.quisl.framework.java.units.qubits.math.linearalgebra.matrix.single.custom.cartesianrotation;
 
 import org.quisl.framework.java.units.qubits.math.complex.ComplexNumber;
 import org.quisl.framework.java.units.qubits.math.linearalgebra.Matrix;
