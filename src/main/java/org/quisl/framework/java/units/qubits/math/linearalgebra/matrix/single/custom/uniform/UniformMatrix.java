@@ -40,14 +40,14 @@ public class UniformMatrix extends Matrix {
         return new ComplexNumber[][]
                       { { new ComplexNumber( Math.cos( ( thetaRadians/2.0 ) ) , 0.0 ),
                           new ComplexNumber(
-                                  ( ( -Math.cos(lambdaRadians)/Math.sqrt(2.0) ) * ( Math.sin( ( thetaRadians / 2.0 ) ) ) ) ,
-                                  ( ( -Math.sin(lambdaRadians)/Math.sqrt(2.0) ) * ( Math.sin( ( thetaRadians / 2.0 ) ) ) ) ) },
+                                  ( -Math.cos(lambdaRadians) * ( Math.sin( ( thetaRadians / 2.0 ) ) ) ) ,
+                                  ( -Math.sin(lambdaRadians) * ( Math.sin( ( thetaRadians / 2.0 ) ) ) ) ) },
                         { new ComplexNumber(
-                                ( ( Math.cos(phiRadians)/Math.sqrt(2.0) ) * ( Math.sin( ( thetaRadians / 2.0 ) ) ) ) ,
-                                ( ( Math.sin(phiRadians)/Math.sqrt(2.0) ) * ( Math.sin( ( thetaRadians / 2.0 ) ) ) ) ),
+                                  ( Math.cos(phiRadians) * ( Math.sin( ( thetaRadians / 2.0 ) ) ) ) ,
+                                  ( Math.sin(phiRadians) * ( Math.sin( ( thetaRadians / 2.0 ) ) ) ) ),
                           new ComplexNumber(
-                                ( ( Math.cos(phiRadians + lambdaRadians)/Math.sqrt(2.0) ) * ( Math.cos( ( thetaRadians / 2.0 ) ) ) ),
-                                ( ( Math.sin(phiRadians + lambdaRadians)/Math.sqrt(2.0) ) * ( Math.cos( ( thetaRadians / 2.0 ) ) ) ) ) } };
+                                  ( Math.cos(phiRadians + lambdaRadians) * ( Math.cos( ( thetaRadians / 2.0 ) ) ) ),
+                                  ( Math.sin(phiRadians + lambdaRadians) * ( Math.cos( ( thetaRadians / 2.0 ) ) ) ) ) } };
 
     }
 
