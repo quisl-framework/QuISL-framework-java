@@ -1,9 +1,9 @@
 package org.quisl.framework.java.instructions.operators.quantum.single.pauli;
 
-import org.quisl.framework.java.units.qubits.Qubit;
+import org.quisl.framework.java.instructions.operators.quantum.single.SingleQuantumOperator;
 import org.quisl.framework.java.math.complex.ComplexNumber;
 import org.quisl.framework.java.math.linearalgebra.matrix.quantumoperators.single.pauli.PauliMatrix;
-import org.quisl.framework.java.instructions.operators.quantum.single.SingleQuantumOperator;
+import org.quisl.framework.java.units.qubits.Qubit;
 
 public class PauliX extends SingleQuantumOperator {
 

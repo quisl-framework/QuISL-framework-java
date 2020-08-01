@@ -1,7 +1,5 @@
 package org.quisl.framework.java.units.qubits;
 
-import org.quisl.framework.java.math.geometry.spheres.BlochSphere;
-import org.quisl.framework.java.math.complex.ComplexNumber;
 import org.quisl.framework.java.instructions.operators.quantum.QuantumOperator;
 import org.quisl.framework.java.instructions.operators.quantum.multi.swap.Swap;
 import org.quisl.framework.java.instructions.operators.quantum.single.SingleQuantumOperator;
@@ -10,6 +8,8 @@ import org.quisl.framework.java.instructions.operators.quantum.single.pauli.Iden
 import org.quisl.framework.java.instructions.operators.quantum.single.pauli.PauliX;
 import org.quisl.framework.java.instructions.operators.quantum.single.pauli.PauliY;
 import org.quisl.framework.java.instructions.operators.quantum.single.pauli.PauliZ;
+import org.quisl.framework.java.math.complex.ComplexNumber;
+import org.quisl.framework.java.math.geometry.spheres.BlochSphere;
 
 import java.util.ArrayList;
 import java.util.List;

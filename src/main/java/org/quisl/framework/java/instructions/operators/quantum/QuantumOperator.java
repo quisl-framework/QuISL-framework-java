@@ -1,7 +1,7 @@
 package org.quisl.framework.java.instructions.operators.quantum;
 
-import org.quisl.framework.java.units.qubits.Qubit;
 import org.quisl.framework.java.math.complex.ComplexNumber;
+import org.quisl.framework.java.units.qubits.Qubit;
 
 public abstract class QuantumOperator {
 
