@@ -93,7 +93,9 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     }
 
-    public ComplexNumber[][] addScalarToComplexNumberMatrix(ComplexNumber complexNumberScalar, ComplexNumber[][] originalMatrix) {
+    public ComplexNumber[][] addScalarToComplexNumberMatrix(ComplexNumber complexNumberScalar,
+                                                            ComplexNumber[][] originalMatrix)
+    {
 
         if(!isValidMatrix(originalMatrix)) {
 
@@ -121,8 +123,6 @@ public class NumericMatrixOperators extends MatrixUtils {
         return resultMatrix;
 
     }
-
-
 
     public Integer[][] subtractScalarToIntegerMatrix(Integer integerScalar, Integer[][] originalMatrix) {
 
@@ -208,7 +208,9 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     }
 
-    public ComplexNumber[][] subtractScalarToComplexNumberMatrix(ComplexNumber complexNumberScalar, ComplexNumber[][] originalMatrix) {
+    public ComplexNumber[][] subtractScalarToComplexNumberMatrix(ComplexNumber complexNumberScalar,
+                                                                 ComplexNumber[][] originalMatrix)
+    {
 
         if(!isValidMatrix(originalMatrix)) {
 
@@ -236,8 +238,6 @@ public class NumericMatrixOperators extends MatrixUtils {
         return resultMatrix;
 
     }
-
-
 
     public Integer[][] multiplyScalarToIntegerMatrix(Integer integerScalar, Integer[][] originalMatrix) {
 
@@ -323,7 +323,8 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     }
 
-    public ComplexNumber[][] multiplyScalarToComplexNumberMatrix(ComplexNumber complexNumberScalar, ComplexNumber[][] originalMatrix) {
+    public ComplexNumber[][] multiplyScalarToComplexNumberMatrix(ComplexNumber complexNumberScalar,
+                                                                 ComplexNumber[][] originalMatrix) {
 
         if(!isValidMatrix(originalMatrix)) {
 
@@ -351,8 +352,6 @@ public class NumericMatrixOperators extends MatrixUtils {
         return resultMatrix;
 
     }
-
-
 
     public Integer[][] divideScalarToIntegerMatrix(Integer integerScalar, Integer[][] originalMatrix) {
 
@@ -456,7 +455,9 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     }
 
-    public ComplexNumber[][] divideScalarToComplexNumberMatrix(ComplexNumber complexNumberScalar, ComplexNumber[][] originalMatrix) {
+    public ComplexNumber[][] divideScalarToComplexNumberMatrix(ComplexNumber complexNumberScalar,
+                                                               ComplexNumber[][] originalMatrix)
+    {
 
         if(!isValidMatrix(originalMatrix)) {
 
@@ -490,7 +491,5 @@ public class NumericMatrixOperators extends MatrixUtils {
         return resultMatrix;
 
     }
-
-
 
 }

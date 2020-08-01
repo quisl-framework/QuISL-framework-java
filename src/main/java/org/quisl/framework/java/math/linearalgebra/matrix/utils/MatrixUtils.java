@@ -56,7 +56,6 @@ public class MatrixUtils {
 
     }
 
-
     public static boolean isColumnVector(Object[][] matrix) {
 
         return ( ( matrix.length > 1 ) && ( matrix[0].length == 1 ) );
@@ -92,7 +91,6 @@ public class MatrixUtils {
         return ( ( matrix.length > 1 ) && ( matrix[0].length == 1 ) );
 
     }
-
 
     public static boolean isMatrixSquared(Object[][] matrix) {
 
@@ -641,7 +639,6 @@ public class MatrixUtils {
         return true;
 
     }
-
 
     public static boolean isDiagonalMatrix(Object[][] matrix) {
 

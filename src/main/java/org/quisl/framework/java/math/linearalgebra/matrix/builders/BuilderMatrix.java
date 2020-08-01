@@ -1,5 +1,5 @@
 package org.quisl.framework.java.math.linearalgebra.matrix.builders;
 
-public class BuilderMatrix {
+public abstract class BuilderMatrix {
 
 }
