@@ -19,7 +19,7 @@ public class PhaseShiftMatrix extends Matrix {
 
     }
 
-    public static ComplexNumber[][] getPhaseShiftPiDividedBy2() {
+    public static ComplexNumber[][] getPhaseShiftPiDividedBy2Matrix() {
 
         return new ComplexNumber[][]
                       { { ComplexNumber.real_one_img_zero, ComplexNumber.real_zero_img_zero },
@@ -27,23 +27,34 @@ public class PhaseShiftMatrix extends Matrix {
 
     }
 
-    public static ComplexNumber[][] getPhaseShiftPiDividedBy4() {
+    public static ComplexNumber[][] getPhaseShiftPiDividedBy4SimpleMatrix() {
 
         return new ComplexNumber[][]
                       { { ComplexNumber.real_one_img_zero,
                           ComplexNumber.real_zero_img_zero },
                         { ComplexNumber.real_zero_img_zero,
-                          new ComplexNumber
-                                  (
-                                      ( 1.0 / Math.sqrt(2.0) ) ,
-                                      ( 1.0 / Math.sqrt(2.0) )
-                                  )
-                        }
-                      };
+                          ComplexNumber.real_one_img_one }
+                };
 
     }
 
-    public static ComplexNumber[][] getPhaseShiftPiDividedBy8() {
+    public static ComplexNumber[][] getPhaseShiftPiDividedBy4EulerMatrix() {
+
+        return new ComplexNumber[][]
+                { { ComplexNumber.real_one_img_zero,
+                        ComplexNumber.real_zero_img_zero },
+                        { ComplexNumber.real_zero_img_zero,
+                                new ComplexNumber
+                                        (
+                                                ( 1.0 / Math.sqrt(2.0) ) ,
+                                                ( 1.0 / Math.sqrt(2.0) )
+                                        )
+                        }
+                };
+
+    }
+
+    public static ComplexNumber[][] getPhaseShiftPiDividedBy8Matrix() {
 
         return new ComplexNumber[][]
                       { { ComplexNumber.real_one_img_zero,
