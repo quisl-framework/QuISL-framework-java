@@ -1,5 +1,10 @@
 # QuISL (Quantum Information Science Library)
 
+![https://quisl-framework.github.io/assets/imgs/pngs/quisl-logo-2.png](https://quisl-framework.github.io/assets/imgs/pngs/quisl-logo-2.png)
+###### QuISL (Quantum Information Science Library) for Java - Logo
+
+***
+
 ## Description
 
 > A project based in **_Quantum Computing_** and **_Quantum Information Science_**. This project was built using [**_Java_**](https://www.java.com/) and [**_JUnit_**](https://junit.org/). The [**_QuISL (Quantum Information Science Library)_**]() is a [**_Java_**](https://www.java.com/) **_Library (or Toolbox/Framework)_**, _which will act as_ **_Simulator_** _of this new technology_, as also, _will allow to build and study_ **_Quantum Circuits_**, **_Quantum Algorithms_**, among many others, using a **_Object-Oriented Language_**, such as [**_Java_**](https://www.java.com/) **_Programming Language_**.
