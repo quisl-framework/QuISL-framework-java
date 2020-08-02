@@ -1,4 +1,4 @@
-package org.quisl.framework.java.units.bits;
+package org.quisl.framework.java.units.computing.classical.binary.deterministic.bits;
 
 import java.util.Objects;
 

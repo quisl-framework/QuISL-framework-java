@@ -2,7 +2,7 @@ package org.quisl.framework.java.instructions.operators.quantum.single;
 
 import org.quisl.framework.java.instructions.operators.quantum.QuantumOperator;
 import org.quisl.framework.java.math.complex.ComplexNumber;
-import org.quisl.framework.java.units.qubits.Qubit;
+import org.quisl.framework.java.units.computing.quantum.binary.qubits.Qubit;
 
 public abstract class SingleQuantumOperator extends QuantumOperator {
 

@@ -3,7 +3,7 @@ package org.quisl.framework.java.instructions.operators.quantum.single.hadamard;
 import org.quisl.framework.java.instructions.operators.quantum.single.SingleQuantumOperator;
 import org.quisl.framework.java.math.complex.ComplexNumber;
 import org.quisl.framework.java.math.linearalgebra.matrix.quantumoperators.single.hadamard.HadamardMatrix;
-import org.quisl.framework.java.units.qubits.Qubit;
+import org.quisl.framework.java.units.computing.quantum.binary.qubits.Qubit;
 
 public class Hadamard extends SingleQuantumOperator {
 

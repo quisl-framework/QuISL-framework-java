@@ -2,7 +2,7 @@ package org.quisl.framework.java.circuits.quantum;
 
 import org.quisl.framework.java.registers.classical.ClassicalRegister;
 import org.quisl.framework.java.registers.quantum.QuantumRegister;
-import org.quisl.framework.java.units.qubits.Qubit;
+import org.quisl.framework.java.units.computing.quantum.binary.qubits.Qubit;
 
 import java.util.ArrayList;
 import java.util.List;

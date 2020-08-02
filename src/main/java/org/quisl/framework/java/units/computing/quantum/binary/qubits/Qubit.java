@@ -1,4 +1,4 @@
-package org.quisl.framework.java.units.qubits;
+package org.quisl.framework.java.units.computing.quantum.binary.qubits;
 
 import org.quisl.framework.java.instructions.operators.quantum.QuantumOperator;
 import org.quisl.framework.java.instructions.operators.quantum.multi.swap.Swap;
@@ -10,12 +10,14 @@ import org.quisl.framework.java.instructions.operators.quantum.single.pauli.Paul
 import org.quisl.framework.java.instructions.operators.quantum.single.pauli.PauliZ;
 import org.quisl.framework.java.math.complex.ComplexNumber;
 import org.quisl.framework.java.math.geometry.spheres.BlochSphere;
+import org.quisl.framework.java.units.computing.ComputingUnit;
+import org.quisl.framework.java.units.computing.quantum.binary.QuantumBinaryComputingUnit;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class Qubit {
+public class Qubit extends QuantumBinaryComputingUnit {
 
     private static final Integer GROUND_STATE = 0;
     private static final Integer EXCITED_STATE = 1;

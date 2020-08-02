@@ -3,7 +3,7 @@ package org.quisl.framework.java.instructions.operators.quantum.multi.swap;
 import org.quisl.framework.java.instructions.operators.quantum.multi.MultiQuantumOperator;
 import org.quisl.framework.java.math.complex.ComplexNumber;
 import org.quisl.framework.java.math.linearalgebra.matrix.quantumoperators.multi.two.swap.SWAPMatrix;
-import org.quisl.framework.java.units.qubits.Qubit;
+import org.quisl.framework.java.units.computing.quantum.binary.qubits.Qubit;
 
 public class Swap extends MultiQuantumOperator {
 

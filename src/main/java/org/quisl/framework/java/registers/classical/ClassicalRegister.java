@@ -2,8 +2,8 @@ package org.quisl.framework.java.registers.classical;
 
 import org.quisl.framework.java.math.complex.ComplexNumber;
 import org.quisl.framework.java.registers.Register;
-import org.quisl.framework.java.units.bits.Bit;
-import org.quisl.framework.java.units.qubits.Qubit;
+import org.quisl.framework.java.units.computing.classical.binary.deterministic.bits.Bit;
+import org.quisl.framework.java.units.computing.quantum.binary.qubits.Qubit;
 
 import java.util.Arrays;
 
