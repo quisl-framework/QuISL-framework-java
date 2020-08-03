@@ -20,37 +20,73 @@ public class MatrixUtils {
 
     }
 
-    public static boolean isLineVector(Object[][] matrix) {
+    public static boolean isScalar(Object[][] matrix) {
+
+        return ( ( matrix.length == 1 ) && ( matrix[0].length == 1 ) );
+
+    }
+
+    public static boolean isScalar(Integer[][] matrix) {
+
+        return ( ( matrix.length == 1 ) && ( matrix[0].length == 1 ) );
+
+    }
+
+    public static boolean isScalar(Double[][] matrix) {
+
+        return ( ( matrix.length == 1 ) && ( matrix[0].length == 1 ) );
+
+    }
+
+    public static boolean isScalar(Float[][] matrix) {
+
+        return ( ( matrix.length == 1 ) && ( matrix[0].length == 1 ) );
+
+    }
+
+    public static boolean isScalar(Boolean[][] matrix) {
+
+        return ( ( matrix.length == 1 ) && ( matrix[0].length == 1 ) );
+
+    }
+
+    public static boolean isScalar(ComplexNumber[][] matrix) {
+
+        return ( ( matrix.length == 1 ) && ( matrix[0].length == 1 ) );
+
+    }
+
+    public static boolean isRowVector(Object[][] matrix) {
 
         return ( ( matrix.length == 1 ) && ( matrix[0].length > 1 ) );
 
     }
 
-    public static boolean isLineVector(Integer[][] matrix) {
+    public static boolean isRowVector(Integer[][] matrix) {
 
         return ( ( matrix.length == 1 ) && ( matrix[0].length > 1 ) );
 
     }
 
-    public static boolean isLineVector(Double[][] matrix) {
+    public static boolean isRowVector(Double[][] matrix) {
 
         return ( ( matrix.length == 1 ) && ( matrix[0].length > 1 ) );
 
     }
 
-    public static boolean isLineVector(Float[][] matrix) {
+    public static boolean isRowVector(Float[][] matrix) {
 
         return ( ( matrix.length == 1 ) && ( matrix[0].length > 1 ) );
 
     }
 
-    public static boolean isLineVector(Boolean[][] matrix) {
+    public static boolean isRowVector(Boolean[][] matrix) {
 
         return ( ( matrix.length == 1 ) && ( matrix[0].length > 1 ) );
 
     }
 
-    public static boolean isLineVector(ComplexNumber[][] matrix) {
+    public static boolean isRowVector(ComplexNumber[][] matrix) {
 
         return ( ( matrix.length == 1 ) && ( matrix[0].length > 1 ) );
 
@@ -934,8 +970,8 @@ public class MatrixUtils {
 
         }
 
-        int numRows = originalMatrix.length;
-        int numColumns = originalMatrix[0].length;
+        int numRows = getNumRows(originalMatrix);
+        int numColumns = getNumColumns(originalMatrix);
 
         Object[][] transposedMatrix = new Object[numColumns][numRows];
 
@@ -961,8 +997,8 @@ public class MatrixUtils {
 
         }
 
-        int numRows = originalMatrix.length;
-        int numColumns = originalMatrix[0].length;
+        int numRows = getNumRows(originalMatrix);
+        int numColumns = getNumColumns(originalMatrix);
 
         Integer[][] transposedMatrix = new Integer[numColumns][numRows];
 
@@ -988,8 +1024,8 @@ public class MatrixUtils {
 
         }
 
-        int numRows = originalMatrix.length;
-        int numColumns = originalMatrix[0].length;
+        int numRows = getNumRows(originalMatrix);
+        int numColumns = getNumColumns(originalMatrix);
 
         Double[][] transposedMatrix = new Double[numColumns][numRows];
 
@@ -1015,8 +1051,8 @@ public class MatrixUtils {
 
         }
 
-        int numRows = originalMatrix.length;
-        int numColumns = originalMatrix[0].length;
+        int numRows = getNumRows(originalMatrix);
+        int numColumns = getNumColumns(originalMatrix);
 
         Float[][] transposedMatrix = new Float[numColumns][numRows];
 
@@ -1038,12 +1074,12 @@ public class MatrixUtils {
 
         if( ( originalMatrix == null ) || ( originalMatrix.length == 0 ) || ( originalMatrix[0].length == 0 ) ) {
 
-            return originalMatrix;
+            return null;
 
         }
 
-        int numRows = originalMatrix.length;
-        int numColumns = originalMatrix[0].length;
+        int numRows = getNumRows(originalMatrix);
+        int numColumns = getNumColumns(originalMatrix);
 
         Boolean[][] transposedMatrix = new Boolean[numColumns][numRows];
 
@@ -1065,12 +1101,12 @@ public class MatrixUtils {
 
         if( ( originalMatrix == null ) || ( originalMatrix.length == 0 ) || ( originalMatrix[0].length == 0 ) ) {
 
-            return originalMatrix;
+            return null;
 
         }
 
-        int numRows = originalMatrix.length;
-        int numColumns = originalMatrix[0].length;
+        int numRows = getNumRows(originalMatrix);
+        int numColumns = getNumColumns(originalMatrix);
 
         ComplexNumber[][] transposedMatrix = new ComplexNumber[numColumns][numRows];
 
