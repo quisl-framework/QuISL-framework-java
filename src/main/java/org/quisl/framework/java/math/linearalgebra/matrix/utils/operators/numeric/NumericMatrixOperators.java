@@ -492,4 +492,58 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     }
 
+    public static ComplexNumber[][] computeConjugateMatrix(ComplexNumber[][] originalMatrix) {
+
+        if(!isValidMatrix(originalMatrix)) {
+
+            return null;
+
+        }
+
+        if(!isComplexNumberMatrix(originalMatrix)) {
+
+            return null;
+
+        }
+
+        int numRows = getNumRows(originalMatrix);
+        int numColumns = getNumColumns(originalMatrix);
+
+        ComplexNumber[][] conjugateMatrix = new ComplexNumber[numRows][numColumns];
+
+        for(int currentRow = 0; currentRow < numRows; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumns; currentColumn++) {
+
+                conjugateMatrix[currentRow][currentColumn] = originalMatrix[currentRow][currentColumn].conjugate();
+
+            }
+
+        }
+
+        return conjugateMatrix;
+
+    }
+
+    public static ComplexNumber[][] computeHermitianMatrix(ComplexNumber[][] originalMatrix) {
+
+        if(!isValidMatrix(originalMatrix)) {
+
+            return null;
+
+        }
+
+        if(!isComplexNumberMatrix(originalMatrix)) {
+
+            return null;
+
+        }
+
+
+        ComplexNumber[][] transposedMatrix = transposeMatrix(originalMatrix);
+
+        return computeConjugateMatrix(transposedMatrix);
+
+    }
+
 }
