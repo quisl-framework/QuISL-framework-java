@@ -9,6 +9,35 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     }
 
+    public boolean areTwoIntegerMatricesEqual(Integer[][] integerMatrixNum1, Integer[][] integerMatrixNum2) {
+
+        // TODO
+        return false;
+
+    }
+
+    public boolean areTwoDoubleMatricesEqual(Double[][] doubleMatrixNum1, Double[][] doubleMatrixNum2) {
+
+        // TODO
+        return false;
+
+    }
+
+    public boolean areTwoFloatMatricesEqual(Float[][] floatMatrixNum1, Float[][] floatMatrixNum2) {
+
+        // TODO
+        return false;
+
+    }
+
+    public boolean areTwoComplexNumberMatricesEqual(ComplexNumber[][] complexNumberMatrixNum1,
+                                                    ComplexNumber[][] complexNumberMatrixNum2) {
+
+        // TODO
+        return false;
+
+    }
+
     public Integer[][] addScalarToIntegerMatrix(Integer integerScalar, Integer[][] originalMatrix) {
 
         if(!isValidMatrix(originalMatrix)) {
@@ -112,9 +141,11 @@ public class NumericMatrixOperators extends MatrixUtils {
 
             for(int currentNumColumn = 0; currentNumColumn < numColumns; currentNumColumn++) {
 
-                originalMatrix[currentNumRow][currentNumColumn].add(complexNumberScalar);
+                ComplexNumber intermediaryComplexNumber = originalMatrix[currentNumRow][currentNumColumn];
 
-                resultMatrix[currentNumRow][currentNumColumn] = originalMatrix[currentNumRow][currentNumColumn];
+                intermediaryComplexNumber.add(complexNumberScalar);
+
+                resultMatrix[currentNumRow][currentNumColumn] = intermediaryComplexNumber;
 
             }
 
@@ -227,9 +258,11 @@ public class NumericMatrixOperators extends MatrixUtils {
 
             for(int currentNumColumn = 0; currentNumColumn < numColumns; currentNumColumn++) {
 
-                originalMatrix[currentNumRow][currentNumColumn].subtract(complexNumberScalar);
+                ComplexNumber intermediaryComplexNumber = originalMatrix[currentNumRow][currentNumColumn];
 
-                resultMatrix[currentNumRow][currentNumColumn] = originalMatrix[currentNumRow][currentNumColumn];
+                intermediaryComplexNumber.subtract(complexNumberScalar);
+
+                resultMatrix[currentNumRow][currentNumColumn] = intermediaryComplexNumber;
 
             }
 
@@ -341,9 +374,11 @@ public class NumericMatrixOperators extends MatrixUtils {
 
             for(int currentNumColumn = 0; currentNumColumn < numColumns; currentNumColumn++) {
 
-                originalMatrix[currentNumRow][currentNumColumn].multiply(complexNumberScalar);
+                ComplexNumber intermediaryComplexNumber = originalMatrix[currentNumRow][currentNumColumn];
 
-                resultMatrix[currentNumRow][currentNumColumn] = originalMatrix[currentNumRow][currentNumColumn];
+                intermediaryComplexNumber.multiply(complexNumberScalar);
+
+                resultMatrix[currentNumRow][currentNumColumn] = intermediaryComplexNumber;
 
             }
 
@@ -480,9 +515,11 @@ public class NumericMatrixOperators extends MatrixUtils {
 
             for(int currentNumColumn = 0; currentNumColumn < numColumns; currentNumColumn++) {
 
-                originalMatrix[currentNumRow][currentNumColumn].divide(complexNumberScalar);
+                ComplexNumber intermediaryComplexNumber = originalMatrix[currentNumRow][currentNumColumn];
 
-                resultMatrix[currentNumRow][currentNumColumn] = originalMatrix[currentNumRow][currentNumColumn];
+                intermediaryComplexNumber.divide(complexNumberScalar);
+
+                resultMatrix[currentNumRow][currentNumColumn] = intermediaryComplexNumber;
 
             }
 
@@ -727,12 +764,14 @@ public class NumericMatrixOperators extends MatrixUtils {
         int numRowsComplexNumberMatrixNum2 = getNumRows(complexNumberMatrixNum2);
         int numColumnsComplexNumberMatrixNum2 = getNumColumns(complexNumberMatrixNum2);
 
+
         if( ( numRowsComplexNumberMatrixNum1 != numRowsComplexNumberMatrixNum2 ) ||
                 ( numColumnsComplexNumberMatrixNum1 != numColumnsComplexNumberMatrixNum2 ) ) {
 
             return null;
 
         }
+
 
         ComplexNumber[][] resultMatrix = new ComplexNumber[numRowsComplexNumberMatrixNum1][numColumnsComplexNumberMatrixNum1];
 
@@ -743,6 +782,215 @@ public class NumericMatrixOperators extends MatrixUtils {
                 resultMatrix[currentRow][currentColumn] = complexNumberMatrixNum1[currentRow][currentColumn];
 
                 resultMatrix[currentRow][currentColumn].subtract( complexNumberMatrixNum2[currentRow][currentColumn] );
+
+            }
+
+        }
+
+        return resultMatrix;
+
+    }
+
+    public Integer[][] multiplyTwoIntegerMatrices(Integer[][] integerMatrixNum1, Integer[][] integerMatrixNum2) {
+
+        if( !isValidMatrix(integerMatrixNum1) || !isValidMatrix(integerMatrixNum2) ) {
+
+            return null;
+
+        }
+
+
+        int numRowsIntegerMatrixNum1 = getNumRows(integerMatrixNum1);
+        int numColumnsIntegerMatrixNum1 = getNumColumns(integerMatrixNum1);
+
+        int numRowsIntegerMatrixNum2 = getNumRows(integerMatrixNum2);
+        int numColumnsIntegerMatrixNum2 = getNumColumns(integerMatrixNum2);
+
+
+        if(numColumnsIntegerMatrixNum1 != numRowsIntegerMatrixNum2) {
+
+            return null;
+
+        }
+
+
+        Integer[][] resultMatrix = new Integer[numRowsIntegerMatrixNum1][numColumnsIntegerMatrixNum2];
+
+        for(int currentRowMatrixNum1 = 0;
+            currentRowMatrixNum1 < numRowsIntegerMatrixNum1; currentRowMatrixNum1++) {
+
+            for (int currentColumnMatrixNum2 = 0;
+                 currentColumnMatrixNum2 < numColumnsIntegerMatrixNum2; currentColumnMatrixNum2++) {
+
+                for (int currentColumnMatrixNum1 = 0;
+                     currentColumnMatrixNum1 < numColumnsIntegerMatrixNum1; currentColumnMatrixNum1++) {
+
+                    resultMatrix[currentRowMatrixNum1][currentColumnMatrixNum2] +=
+                            ( integerMatrixNum1[currentRowMatrixNum1][currentColumnMatrixNum1] *
+                              integerMatrixNum2[currentColumnMatrixNum1][currentColumnMatrixNum2] );
+
+                }
+
+            }
+
+        }
+
+        return resultMatrix;
+
+    }
+
+    public Double[][] multiplyTwoDoubleMatrices(Double[][] doubleMatrixNum1, Double[][] doubleMatrixNum2) {
+
+        if( !isValidMatrix(doubleMatrixNum1) || !isValidMatrix(doubleMatrixNum2) ) {
+
+            return null;
+
+        }
+
+
+        int numRowsDoubleMatrixNum1 = getNumRows(doubleMatrixNum1);
+        int numColumnsDoubleMatrixNum1 = getNumColumns(doubleMatrixNum1);
+
+        int numRowsDoubleMatrixNum2 = getNumRows(doubleMatrixNum2);
+        int numColumnsDoubleMatrixNum2 = getNumColumns(doubleMatrixNum2);
+
+
+        if(numColumnsDoubleMatrixNum1 != numRowsDoubleMatrixNum2) {
+
+            return null;
+
+        }
+
+
+        Double[][] resultMatrix = new Double[numRowsDoubleMatrixNum1][numColumnsDoubleMatrixNum2];
+
+        for(int currentRowMatrixNum1 = 0;
+            currentRowMatrixNum1 < numRowsDoubleMatrixNum1; currentRowMatrixNum1++) {
+
+            for (int currentColumnMatrixNum2 = 0;
+                 currentColumnMatrixNum2 < numColumnsDoubleMatrixNum2; currentColumnMatrixNum2++) {
+
+                for (int currentColumnMatrixNum1 = 0;
+                     currentColumnMatrixNum1 < numColumnsDoubleMatrixNum1; currentColumnMatrixNum1++) {
+
+                    resultMatrix[currentRowMatrixNum1][currentColumnMatrixNum2] +=
+                            ( doubleMatrixNum1[currentRowMatrixNum1][currentColumnMatrixNum1] *
+                                    doubleMatrixNum2[currentColumnMatrixNum1][currentColumnMatrixNum2] );
+
+                }
+
+            }
+
+        }
+
+        return resultMatrix;
+
+    }
+
+    public Float[][] multiplyTwoDoubleMatrices(Float[][] floatMatrixNum1, Float[][] floatMatrixNum2) {
+
+        if(!isValidMatrix(floatMatrixNum1) || !isValidMatrix(floatMatrixNum2)) {
+
+            return null;
+
+        }
+
+
+        int numRowsFloatMatrixNum1 = getNumRows(floatMatrixNum1);
+        int numColumnsFloatMatrixNum1 = getNumColumns(floatMatrixNum1);
+
+        int numRowsFloatMatrixNum2 = getNumRows(floatMatrixNum2);
+        int numColumnsFloatMatrixNum2 = getNumColumns(floatMatrixNum2);
+
+
+        if(numColumnsFloatMatrixNum1 != numRowsFloatMatrixNum2) {
+
+            return null;
+
+        }
+
+
+        Float[][] resultMatrix = new Float[numRowsFloatMatrixNum1][numColumnsFloatMatrixNum2];
+
+        for(int currentRowMatrixNum1 = 0;
+            currentRowMatrixNum1 < numRowsFloatMatrixNum1; currentRowMatrixNum1++) {
+
+            for (int currentColumnMatrixNum2 = 0;
+                 currentColumnMatrixNum2 < numColumnsFloatMatrixNum2; currentColumnMatrixNum2++) {
+
+                for (int currentColumnMatrixNum1 = 0;
+                     currentColumnMatrixNum1 < numColumnsFloatMatrixNum1; currentColumnMatrixNum1++) {
+
+                    resultMatrix[currentRowMatrixNum1][currentColumnMatrixNum2] +=
+                            ( floatMatrixNum1[currentRowMatrixNum1][currentColumnMatrixNum1] *
+                                    floatMatrixNum2[currentColumnMatrixNum1][currentColumnMatrixNum2] );
+
+                }
+
+            }
+
+        }
+
+        return resultMatrix;
+
+    }
+
+    public ComplexNumber[][] multiplyTwoComplexNumberMatrices(ComplexNumber[][] complexNumberMatrixNum1,
+                                                              ComplexNumber[][] complexNumberMatrixNum2)
+    {
+
+        if(!isValidMatrix(complexNumberMatrixNum1) || !isValidMatrix(complexNumberMatrixNum2)) {
+
+            return null;
+
+        }
+
+
+        int numRowsComplexNumberMatrixNum1 = getNumRows(complexNumberMatrixNum1);
+        int numColumnsComplexNumberMatrixNum1 = getNumColumns(complexNumberMatrixNum1);
+
+        int numRowsComplexNumberMatrixNum2 = getNumRows(complexNumberMatrixNum2);
+        int numColumnsComplexNumberMatrixNum2 = getNumColumns(complexNumberMatrixNum2);
+
+
+        if(numColumnsComplexNumberMatrixNum1 != numRowsComplexNumberMatrixNum2) {
+
+            return null;
+
+        }
+
+
+        ComplexNumber[][] resultMatrix =
+                new ComplexNumber[numRowsComplexNumberMatrixNum1][numColumnsComplexNumberMatrixNum2];
+
+        for(int currentRow = 0; currentRow < numRowsComplexNumberMatrixNum1; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumnsComplexNumberMatrixNum2; currentColumn++) {
+
+                resultMatrix[currentRow][currentColumn] = ComplexNumber.real_zero_img_zero;
+
+            }
+
+        }
+
+        for(int currentRowMatrixNum1 = 0;
+            currentRowMatrixNum1 < numRowsComplexNumberMatrixNum1; currentRowMatrixNum1++) {
+
+            for (int currentColumnMatrixNum2 = 0;
+                 currentColumnMatrixNum2 < numColumnsComplexNumberMatrixNum2; currentColumnMatrixNum2++) {
+
+                for (int currentColumnMatrixNum1 = 0;
+                     currentColumnMatrixNum1 < numColumnsComplexNumberMatrixNum1; currentColumnMatrixNum1++) {
+
+                    ComplexNumber intermediaryComplexNumber =
+                            complexNumberMatrixNum1[currentRowMatrixNum1][currentColumnMatrixNum1];
+
+                    intermediaryComplexNumber
+                            .multiply(complexNumberMatrixNum2[currentColumnMatrixNum1][currentColumnMatrixNum2]);
+
+                    resultMatrix[currentRowMatrixNum1][currentColumnMatrixNum2].add(intermediaryComplexNumber);
+
+                }
 
             }
 
