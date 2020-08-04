@@ -11,30 +11,174 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     public boolean areTwoIntegerMatricesEqual(Integer[][] integerMatrixNum1, Integer[][] integerMatrixNum2) {
 
-        // TODO
-        return false;
+        int numRowsIntegerMatrixNum1 = getNumRows(integerMatrixNum1);
+        int numColumnsIntegerMatrixNum1 = getNumColumns(integerMatrixNum1);
+
+        int numRowsIntegerMatrixNum2 = getNumRows(integerMatrixNum2);
+        int numColumnsIntegerMatrixNum2 = getNumColumns(integerMatrixNum2);
+
+
+        if( ( !isValidMatrix(integerMatrixNum1) ) || ( !isValidMatrix(integerMatrixNum2) ) ) {
+
+            return false;
+
+        }
+
+
+        if( (numRowsIntegerMatrixNum1 != numRowsIntegerMatrixNum2) ||
+            (numColumnsIntegerMatrixNum1 != numColumnsIntegerMatrixNum2) ) {
+
+            return false;
+
+        }
+
+
+        for(int currentRow = 0; currentRow < numRowsIntegerMatrixNum1; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumnsIntegerMatrixNum1; currentColumn++) {
+
+                if(!integerMatrixNum1[currentRow][currentColumn]
+                   .equals(integerMatrixNum2[currentRow][currentColumn])) {
+
+                    return false;
+
+                }
+
+            }
+
+        }
+
+        return true;
 
     }
 
     public boolean areTwoDoubleMatricesEqual(Double[][] doubleMatrixNum1, Double[][] doubleMatrixNum2) {
 
-        // TODO
-        return false;
+        int numRowsDoubleMatrixNum1 = getNumRows(doubleMatrixNum1);
+        int numColumnsDoubleMatrixNum1 = getNumColumns(doubleMatrixNum1);
+
+        int numRowsDoubleMatrixNum2 = getNumRows(doubleMatrixNum2);
+        int numColumnsDoubleMatrixNum2 = getNumColumns(doubleMatrixNum2);
+
+
+        if( ( !isValidMatrix(doubleMatrixNum1) ) || ( !isValidMatrix(doubleMatrixNum2) ) ) {
+
+            return false;
+
+        }
+
+
+        if( (numRowsDoubleMatrixNum1 != numRowsDoubleMatrixNum2) ||
+            (numColumnsDoubleMatrixNum1 != numColumnsDoubleMatrixNum2) ) {
+
+            return false;
+
+        }
+
+
+        for(int currentRow = 0; currentRow < numRowsDoubleMatrixNum1; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumnsDoubleMatrixNum1; currentColumn++) {
+
+                if(!doubleMatrixNum1[currentRow][currentColumn]
+                        .equals(doubleMatrixNum2[currentRow][currentColumn])) {
+
+                    return false;
+
+                }
+
+            }
+
+        }
+
+        return true;
 
     }
 
     public boolean areTwoFloatMatricesEqual(Float[][] floatMatrixNum1, Float[][] floatMatrixNum2) {
 
-        // TODO
-        return false;
+        int numRowsFloatMatrixNum1 = getNumRows(floatMatrixNum1);
+        int numColumnsFloatMatrixNum1 = getNumColumns(floatMatrixNum1);
+
+        int numRowsFloatMatrixNum2 = getNumRows(floatMatrixNum2);
+        int numColumnsFloatMatrixNum2 = getNumColumns(floatMatrixNum2);
+
+
+        if( ( !isValidMatrix(floatMatrixNum1) ) || ( !isValidMatrix(floatMatrixNum2) ) ) {
+
+            return false;
+
+        }
+
+
+        if( (numRowsFloatMatrixNum1 != numRowsFloatMatrixNum2) ||
+            (numColumnsFloatMatrixNum1 != numColumnsFloatMatrixNum2) ) {
+
+            return false;
+
+        }
+
+
+        for(int currentRow = 0; currentRow < numRowsFloatMatrixNum1; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumnsFloatMatrixNum1; currentColumn++) {
+
+                if(!floatMatrixNum1[currentRow][currentColumn]
+                   .equals(floatMatrixNum2[currentRow][currentColumn])) {
+
+                    return false;
+
+                }
+
+            }
+
+        }
+
+        return true;
 
     }
 
     public boolean areTwoComplexNumberMatricesEqual(ComplexNumber[][] complexNumberMatrixNum1,
                                                     ComplexNumber[][] complexNumberMatrixNum2) {
 
-        // TODO
-        return false;
+        int numRowsComplexNumberMatrixNum1 = getNumRows(complexNumberMatrixNum1);
+        int numColumnsComplexNumberMatrixNum1 = getNumColumns(complexNumberMatrixNum1);
+
+        int numRowsComplexNumberMatrixNum2 = getNumRows(complexNumberMatrixNum2);
+        int numColumnsComplexNumberMatrixNum2 = getNumColumns(complexNumberMatrixNum2);
+
+
+        if( ( !isValidMatrix(complexNumberMatrixNum1) ) || ( !isValidMatrix(complexNumberMatrixNum2) ) ) {
+
+            return false;
+
+        }
+
+
+        if( (numRowsComplexNumberMatrixNum1 != numRowsComplexNumberMatrixNum2) ||
+            (numColumnsComplexNumberMatrixNum1 != numColumnsComplexNumberMatrixNum2) ) {
+
+            return false;
+
+        }
+
+
+        for(int currentRow = 0; currentRow < numRowsComplexNumberMatrixNum1; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumnsComplexNumberMatrixNum1; currentColumn++) {
+
+                if(!complexNumberMatrixNum1[currentRow][currentColumn]
+                   .equals(complexNumberMatrixNum2[currentRow][currentColumn])) {
+
+                    return false;
+
+                }
+
+            }
+
+        }
+
+        return true;
 
     }
 
