@@ -20,6 +20,7 @@ public class MatrixUtils {
 
     }
 
+
     public static Integer[][] createIntegerIdentityMatrix(int dimensionOrder) {
 
         Integer[][] integerIdentityMatrix = new Integer[dimensionOrder][dimensionOrder];
@@ -62,6 +63,21 @@ public class MatrixUtils {
 
 
         return floatIdentityMatrix;
+
+    }
+
+    public static Boolean[][] createBooleanIdentityMatrix(int dimensionOrder) {
+
+        Boolean[][] booleanIdentityMatrix = new Boolean[dimensionOrder][dimensionOrder];
+
+        for(int currentDiagonalElement = 0; currentDiagonalElement < dimensionOrder; currentDiagonalElement++) {
+
+            booleanIdentityMatrix[currentDiagonalElement][currentDiagonalElement] = true;
+
+        }
+
+
+        return booleanIdentityMatrix;
 
     }
 

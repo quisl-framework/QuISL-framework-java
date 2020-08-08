@@ -1145,7 +1145,8 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     }
 
-    public static Integer computeDeterminant(Integer[][] integerMatrix) {
+
+    public static Integer computeDeterminantIntegerMatrix(Integer[][] integerMatrix) {
 
         if( !isValidMatrix(integerMatrix) ) {
 
@@ -1215,7 +1216,7 @@ public class NumericMatrixOperators extends MatrixUtils {
 
             determinantResult += ( temporaryIntegerMatrix[0][currentColumnNum1] *
                                    ( (int) Math.pow( -1 , currentColumnNum1 ) ) *
-                                   computeDeterminant (temporaryIntegerMatrix) );
+                                   computeDeterminantIntegerMatrix(temporaryIntegerMatrix) );
 
         }
 
@@ -1224,7 +1225,7 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     }
 
-    public static Double computeDeterminant(Double[][] doubleMatrix) {
+    public static Double computeDeterminantDoubleMatrix(Double[][] doubleMatrix) {
 
         if( !isValidMatrix(doubleMatrix) ) {
 
@@ -1293,8 +1294,8 @@ public class NumericMatrixOperators extends MatrixUtils {
 
 
             determinantResult += ( temporaryDoubleMatrix[0][currentColumnNum1] *
-                    Math.pow( -1 , currentColumnNum1 ) *
-                    computeDeterminant (temporaryDoubleMatrix) );
+                                 Math.pow( -1 , currentColumnNum1 ) *
+                                 computeDeterminantDoubleMatrix(temporaryDoubleMatrix) );
 
         }
 
@@ -1303,7 +1304,224 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     }
 
-    // TODO
+    public static Float computeDeterminantFloatMatrix(Float[][] floatMatrix) {
+
+        if( !isValidMatrix(floatMatrix) ) {
+
+            return 0.0f;
+
+        }
+
+
+        int numRows = getNumRows(floatMatrix);
+        int numColumns = getNumColumns(floatMatrix);
+
+
+        if( (numRows == 1) && (numColumns == 1) ) {
+
+            return floatMatrix[0][0];
+
+        }
+
+
+        if( (numRows == 2) && (numColumns == 2) ) {
+
+            return ( ( floatMatrix[0][0] * floatMatrix[1][1] ) -
+                     ( floatMatrix[0][1] * floatMatrix[1][0] ) );
+
+        }
+
+
+        if( (numRows == 3) && (numColumns == 3) ) {
+
+            return ( ( ( floatMatrix[0][0] * floatMatrix[1][1] * floatMatrix[2][2] ) +
+                       ( floatMatrix[0][1] * floatMatrix[1][2] * floatMatrix[2][0] ) +
+                       ( floatMatrix[0][2] * floatMatrix[1][0] * floatMatrix[2][1] ) )
+                   - ( ( floatMatrix[0][0] * floatMatrix[1][2] * floatMatrix[2][1] ) +
+                       ( floatMatrix[0][1] * floatMatrix[1][0] * floatMatrix[2][2] ) +
+                       ( floatMatrix[0][2] * floatMatrix[1][1] * floatMatrix[2][0] ) ) );
+
+        }
+
+
+        Float determinantResult = 0.0f;
+        Float[][] temporaryFloatMatrix;
+
+        for (int currentColumnNum1 = 0; currentColumnNum1 < numColumns; currentColumnNum1++) {
+
+            temporaryFloatMatrix = new Float[ ( numRows - 1 ) ][ ( numColumns - 1 ) ];
+
+
+            for (int currentRow = 1; currentRow < numRows; currentRow++) {
+
+                for (int currentColumn2 = 0; currentColumn2 < numColumns; currentColumn2++) {
+
+                    if (currentColumn2 < currentColumnNum1) {
+
+                        temporaryFloatMatrix[ ( currentRow - 1 ) ][currentColumn2] =
+                                floatMatrix[currentRow][currentColumn2];
+
+                    }
+                    else if (currentColumn2 > currentColumnNum1) {
+
+                        temporaryFloatMatrix[ ( currentRow - 1 ) ][ ( currentColumn2 - 1 ) ] =
+                                floatMatrix[currentRow][currentColumn2];
+
+                    }
+                }
+            }
+
+
+            determinantResult += ( temporaryFloatMatrix[0][currentColumnNum1] *
+                                   (float) Math.pow( -1 , currentColumnNum1 ) *
+                                   computeDeterminantFloatMatrix(temporaryFloatMatrix) );
+
+        }
+
+
+        return determinantResult;
+
+    }
+
+    public static ComplexNumber computeDeterminantComplexNumberMatrix(ComplexNumber[][] complexNumberMatrix) {
+
+        if( !isValidMatrix(complexNumberMatrix) ) {
+
+            return ComplexNumber.real_zero_img_zero;
+
+        }
+
+
+        int numRows = getNumRows(complexNumberMatrix);
+        int numColumns = getNumColumns(complexNumberMatrix);
+
+
+        if( (numRows == 1) && (numColumns == 1) ) {
+
+            return complexNumberMatrix[0][0];
+
+        }
+
+
+        if( (numRows == 2) && (numColumns == 2) ) {
+
+            return ComplexNumber.subtract
+                    (
+                        ComplexNumber.multiply( complexNumberMatrix[0][0] , complexNumberMatrix[1][1] ) ,
+                        ComplexNumber.multiply( complexNumberMatrix[0][1] , complexNumberMatrix[1][0] )
+                    );
+
+        }
+
+
+        if( (numRows == 3) && (numColumns == 3) ) {
+
+            ComplexNumber auxiliaryComplexNumberNum1 = complexNumberMatrix[0][0];
+
+            auxiliaryComplexNumberNum1.multiply(complexNumberMatrix[1][1]);
+            auxiliaryComplexNumberNum1.multiply(complexNumberMatrix[2][2]);
+
+
+            ComplexNumber auxiliaryComplexNumberNum2 = complexNumberMatrix[0][1];
+
+            auxiliaryComplexNumberNum2.multiply(complexNumberMatrix[1][2]);
+            auxiliaryComplexNumberNum2.multiply(complexNumberMatrix[2][0]);
+
+
+            ComplexNumber auxiliaryComplexNumberNum3 = complexNumberMatrix[0][2];
+
+            auxiliaryComplexNumberNum3.multiply(complexNumberMatrix[1][0]);
+            auxiliaryComplexNumberNum3.multiply(complexNumberMatrix[2][1]);
+
+
+
+            ComplexNumber auxiliaryComplexNumberNum4 = complexNumberMatrix[0][0];
+
+            auxiliaryComplexNumberNum4.multiply(complexNumberMatrix[1][2]);
+            auxiliaryComplexNumberNum4.multiply(complexNumberMatrix[2][1]);
+
+
+            ComplexNumber auxiliaryComplexNumberNum5 = complexNumberMatrix[0][1];
+
+            auxiliaryComplexNumberNum5.multiply(complexNumberMatrix[1][0]);
+            auxiliaryComplexNumberNum5.multiply(complexNumberMatrix[2][2]);
+
+
+            ComplexNumber auxiliaryComplexNumberNum6 = complexNumberMatrix[0][2];
+
+            auxiliaryComplexNumberNum6.multiply(complexNumberMatrix[1][1]);
+            auxiliaryComplexNumberNum6.multiply(complexNumberMatrix[2][0]);
+
+
+
+            ComplexNumber auxiliaryComplexNumberSum1 = ComplexNumber.real_zero_img_zero;
+
+            auxiliaryComplexNumberSum1.add(auxiliaryComplexNumberNum1);
+            auxiliaryComplexNumberSum1.add(auxiliaryComplexNumberNum2);
+            auxiliaryComplexNumberSum1.add(auxiliaryComplexNumberNum3);
+
+
+            ComplexNumber auxiliaryComplexNumberSum2 = ComplexNumber.real_zero_img_zero;
+
+            auxiliaryComplexNumberSum2.add(auxiliaryComplexNumberNum4);
+            auxiliaryComplexNumberSum2.add(auxiliaryComplexNumberNum5);
+            auxiliaryComplexNumberSum2.add(auxiliaryComplexNumberNum6);
+
+
+            auxiliaryComplexNumberSum1.subtract(auxiliaryComplexNumberSum2);
+
+
+            return auxiliaryComplexNumberSum1;
+
+        }
+
+
+        ComplexNumber determinantResult = ComplexNumber.real_zero_img_zero;
+        ComplexNumber[][] temporaryComplexNumberMatrix;
+
+        for (int currentColumnNum1 = 0; currentColumnNum1 < numColumns; currentColumnNum1++) {
+
+            temporaryComplexNumberMatrix = new ComplexNumber[ ( numRows - 1 ) ][ ( numColumns - 1 ) ];
+
+
+            for (int currentRow = 1; currentRow < numRows; currentRow++) {
+
+                for (int currentColumn2 = 0; currentColumn2 < numColumns; currentColumn2++) {
+
+                    if (currentColumn2 < currentColumnNum1) {
+
+                        temporaryComplexNumberMatrix[ ( currentRow - 1 ) ][currentColumn2] =
+                                complexNumberMatrix[currentRow][currentColumn2];
+
+                    }
+                    else if (currentColumn2 > currentColumnNum1) {
+
+                        temporaryComplexNumberMatrix[ ( currentRow - 1 ) ][ ( currentColumn2 - 1 ) ] =
+                                complexNumberMatrix[currentRow][currentColumn2];
+
+                    }
+                }
+            }
+
+
+            ComplexNumber auxiliaryComplexNumber = temporaryComplexNumberMatrix[0][currentColumnNum1];
+
+
+            auxiliaryComplexNumber.multiply( new ComplexNumber( Math.pow( -1 , currentColumnNum1 ) , 0.0 ) );
+
+            auxiliaryComplexNumber.multiply( computeDeterminantComplexNumberMatrix (temporaryComplexNumberMatrix) );
+
+            determinantResult.add(auxiliaryComplexNumber);
+
+        }
+
+
+        return determinantResult;
+
+    }
+
+
+    // TODO - Invert Matrix
 
 
     public static ComplexNumber[][] computeConjugateMatrix(ComplexNumber[][] originalMatrix) {
