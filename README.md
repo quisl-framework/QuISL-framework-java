@@ -1,6 +1,6 @@
 # QuISL (Quantum Information Science Library)
 
-![https://quisl-framework.github.io/assets/imgs/pngs/quisl-logo-2.png](https://quisl-framework.github.io/assets/imgs/pngs/quisl-logo-2.png)
+![https://quisl-framework.github.io/assets/imgs/pngs/quisl-logo-3.png](https://quisl-framework.github.io/assets/imgs/pngs/quisl-logo-3.png)
 ###### QuISL (Quantum Information Science Library) for Java - Logo
 
 ***
