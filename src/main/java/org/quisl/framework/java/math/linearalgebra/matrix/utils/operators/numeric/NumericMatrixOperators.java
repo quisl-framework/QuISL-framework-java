@@ -1578,4 +1578,346 @@ public class NumericMatrixOperators extends MatrixUtils {
 
     }
 
+
+    public static Integer[][] computeLowerTriangularIntegerMatrix(Integer[][] integerMatrix) {
+
+        if( !isValidMatrix(integerMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(integerMatrix);
+        int numColumns = getNumColumns(integerMatrix);
+
+        if(numRows != numColumns) {
+
+            return null;
+
+        }
+
+
+        Integer[][] lowerTriangularIntegerMatrix = new Integer[numRows][numColumns];
+
+        for(int currentRow = 0; currentRow < numRows; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumns; currentColumn++) {
+
+                if(currentRow >= currentColumn) {
+
+                    lowerTriangularIntegerMatrix[currentRow][currentColumn] =
+                                integerMatrix[currentRow][currentColumn];
+
+                }
+
+            }
+
+        }
+
+
+        return lowerTriangularIntegerMatrix;
+
+    }
+
+    public static Double[][] computeLowerTriangularDoubleMatrix(Double[][] doubleMatrix) {
+
+        if( !isValidMatrix(doubleMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(doubleMatrix);
+        int numColumns = getNumColumns(doubleMatrix);
+
+        if(numRows != numColumns) {
+
+            return null;
+
+        }
+
+
+        Double[][] lowerTriangularDoubleMatrix = new Double[numRows][numColumns];
+
+        for(int currentRow = 0; currentRow < numRows; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumns; currentColumn++) {
+
+                if(currentRow >= currentColumn) {
+
+                    lowerTriangularDoubleMatrix[currentRow][currentColumn] =
+                                doubleMatrix[currentRow][currentColumn];
+
+                }
+
+            }
+
+        }
+
+
+        return lowerTriangularDoubleMatrix;
+
+    }
+
+    public static Float[][] computeLowerTriangularFloatMatrix(Float[][] floatMatrix) {
+
+        if( !isValidMatrix(floatMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(floatMatrix);
+        int numColumns = getNumColumns(floatMatrix);
+
+        if(numRows != numColumns) {
+
+            return null;
+
+        }
+
+
+        Float[][] lowerTriangularFloatMatrix = new Float[numRows][numColumns];
+
+        for(int currentRow = 0; currentRow < numRows; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumns; currentColumn++) {
+
+                if(currentRow >= currentColumn) {
+
+                    lowerTriangularFloatMatrix[currentRow][currentColumn] =
+                                floatMatrix[currentRow][currentColumn];
+
+                }
+
+            }
+
+        }
+
+
+        return lowerTriangularFloatMatrix;
+
+    }
+
+    public static ComplexNumber[][] computeLowerTriangularComplexNumberMatrix(ComplexNumber[][] complexNumberMatrix) {
+
+        if( !isValidMatrix(complexNumberMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(complexNumberMatrix);
+        int numColumns = getNumColumns(complexNumberMatrix);
+
+        if(numRows != numColumns) {
+
+            return null;
+
+        }
+
+
+        ComplexNumber[][] lowerTriangularComplexNumberMatrix = new ComplexNumber[numRows][numColumns];
+
+        for(int currentRow = 0; currentRow < numRows; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumns; currentColumn++) {
+
+                if(currentRow >= currentColumn) {
+
+                    lowerTriangularComplexNumberMatrix[currentRow][currentColumn] =
+                                complexNumberMatrix[currentRow][currentColumn];
+
+                }
+                else {
+
+                    lowerTriangularComplexNumberMatrix[currentRow][currentColumn] =
+                                ComplexNumber.real_zero_img_zero;
+
+                }
+
+            }
+
+        }
+
+
+        return lowerTriangularComplexNumberMatrix;
+
+    }
+
+
+    public static Integer[][] computeUpperTriangularIntegerMatrix(Integer[][] integerMatrix) {
+
+        if( !isValidMatrix(integerMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(integerMatrix);
+        int numColumns = getNumColumns(integerMatrix);
+
+        if(numRows != numColumns) {
+
+            return null;
+
+        }
+
+
+        Integer[][] upperTriangularIntegerMatrix = new Integer[numRows][numColumns];
+
+        for(int currentRow = 0; currentRow < numRows; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumns; currentColumn++) {
+
+                if(currentRow <= currentColumn) {
+
+                    upperTriangularIntegerMatrix[currentRow][currentColumn] =
+                            integerMatrix[currentRow][currentColumn];
+
+                }
+
+            }
+
+        }
+
+
+        return upperTriangularIntegerMatrix;
+
+    }
+
+    public static Double[][] computeUpperTriangularDoubleMatrix(Double[][] doubleMatrix) {
+
+        if( !isValidMatrix(doubleMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(doubleMatrix);
+        int numColumns = getNumColumns(doubleMatrix);
+
+        if(numRows != numColumns) {
+
+            return null;
+
+        }
+
+
+        Double[][] upperTriangularDoubleMatrix = new Double[numRows][numColumns];
+
+        for(int currentRow = 0; currentRow < numRows; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumns; currentColumn++) {
+
+                if(currentRow <= currentColumn) {
+
+                    upperTriangularDoubleMatrix[currentRow][currentColumn] =
+                                doubleMatrix[currentRow][currentColumn];
+
+                }
+
+            }
+
+        }
+
+
+        return upperTriangularDoubleMatrix;
+
+    }
+
+    public static Float[][] computeUpperTriangularFloatMatrix(Float[][] floatMatrix) {
+
+        if( !isValidMatrix(floatMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(floatMatrix);
+        int numColumns = getNumColumns(floatMatrix);
+
+        if(numRows != numColumns) {
+
+            return null;
+
+        }
+
+
+        Float[][] upperTriangularFloatMatrix = new Float[numRows][numColumns];
+
+        for(int currentRow = 0; currentRow < numRows; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumns; currentColumn++) {
+
+                if(currentRow <= currentColumn) {
+
+                    upperTriangularFloatMatrix[currentRow][currentColumn] =
+                                floatMatrix[currentRow][currentColumn];
+
+                }
+
+            }
+
+        }
+
+
+        return upperTriangularFloatMatrix;
+
+    }
+
+    public static ComplexNumber[][] computeUpperTriangularComplexNumberMatrix(ComplexNumber[][] complexNumberMatrix) {
+
+        if( !isValidMatrix(complexNumberMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(complexNumberMatrix);
+        int numColumns = getNumColumns(complexNumberMatrix);
+
+        if(numRows != numColumns) {
+
+            return null;
+
+        }
+
+
+        ComplexNumber[][] upperTriangularComplexNumberMatrix = new ComplexNumber[numRows][numColumns];
+
+        for(int currentRow = 0; currentRow < numRows; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < numColumns; currentColumn++) {
+
+                if(currentRow <= currentColumn) {
+
+                    upperTriangularComplexNumberMatrix[currentRow][currentColumn] =
+                                complexNumberMatrix[currentRow][currentColumn];
+
+                }
+                else {
+
+                    upperTriangularComplexNumberMatrix[currentRow][currentColumn] =
+                                ComplexNumber.real_zero_img_zero;
+
+                }
+
+            }
+
+        }
+
+
+        return upperTriangularComplexNumberMatrix;
+
+    }
+
 }
