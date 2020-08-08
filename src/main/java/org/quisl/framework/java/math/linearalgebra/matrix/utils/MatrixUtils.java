@@ -20,6 +20,174 @@ public class MatrixUtils {
 
     }
 
+    public static Integer[][] createIntegerIdentityMatrix(int dimensionOrder) {
+
+        Integer[][] integerIdentityMatrix = new Integer[dimensionOrder][dimensionOrder];
+
+        for(int currentDiagonalElement = 0; currentDiagonalElement < dimensionOrder; currentDiagonalElement++) {
+
+            integerIdentityMatrix[currentDiagonalElement][currentDiagonalElement] = 1;
+
+        }
+
+
+        return integerIdentityMatrix;
+
+    }
+
+    public static Double[][] createDoubleIdentityMatrix(int dimensionOrder) {
+
+        Double[][] doubleIdentityMatrix = new Double[dimensionOrder][dimensionOrder];
+
+        for(int currentDiagonalElement = 0; currentDiagonalElement < dimensionOrder; currentDiagonalElement++) {
+
+            doubleIdentityMatrix[currentDiagonalElement][currentDiagonalElement] = 1.0;
+
+        }
+
+
+        return doubleIdentityMatrix;
+
+    }
+
+    public static Float[][] createFloatIdentityMatrix(int dimensionOrder) {
+
+        Float[][] floatIdentityMatrix = new Float[dimensionOrder][dimensionOrder];
+
+        for(int currentDiagonalElement = 0; currentDiagonalElement < dimensionOrder; currentDiagonalElement++) {
+
+            floatIdentityMatrix[currentDiagonalElement][currentDiagonalElement] = 1.0f;
+
+        }
+
+
+        return floatIdentityMatrix;
+
+    }
+
+    public static ComplexNumber[][] createComplexNumberIdentityMatrix(int dimensionOrder) {
+
+        ComplexNumber[][] complexNumberIdentityMatrix = new ComplexNumber[dimensionOrder][dimensionOrder];
+
+        for(int currentRow = 0; currentRow < dimensionOrder; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < dimensionOrder; currentColumn++) {
+
+                if(currentRow == currentColumn) {
+
+                    complexNumberIdentityMatrix[currentRow][currentColumn] = ComplexNumber.real_one_img_zero;
+
+                }
+                else {
+
+                    complexNumberIdentityMatrix[currentRow][currentColumn] = ComplexNumber.real_zero_img_zero;
+
+                }
+
+            }
+
+        }
+
+
+        return complexNumberIdentityMatrix;
+
+    }
+
+
+    public static Integer[][] createIntegerDiagonalMatrix(int dimensionOrder,
+                                                          Integer integerElementDiagonal) {
+
+        Integer[][] integerIdentityMatrix = new Integer[dimensionOrder][dimensionOrder];
+
+        for(int currentDiagonalElement = 0; currentDiagonalElement < dimensionOrder; currentDiagonalElement++) {
+
+            integerIdentityMatrix[currentDiagonalElement][currentDiagonalElement] = integerElementDiagonal;
+
+        }
+
+
+        return integerIdentityMatrix;
+
+    }
+
+    public static Double[][] createDoubleDiagonalMatrix(int dimensionOrder,
+                                                        Double doubleElementDiagonal) {
+
+        Double[][] doubleDiagonalMatrix = new Double[dimensionOrder][dimensionOrder];
+
+        for(int currentDiagonalElement = 0; currentDiagonalElement < dimensionOrder; currentDiagonalElement++) {
+
+            doubleDiagonalMatrix[currentDiagonalElement][currentDiagonalElement] = doubleElementDiagonal;
+
+        }
+
+
+        return doubleDiagonalMatrix;
+
+    }
+
+    public static Float[][] createFloatDiagonalMatrix(int dimensionOrder,
+                                                      Float floatElementDiagonal) {
+
+        Float[][] floatDiagonalMatrix = new Float[dimensionOrder][dimensionOrder];
+
+        for(int currentDiagonalElement = 0; currentDiagonalElement < dimensionOrder; currentDiagonalElement++) {
+
+            floatDiagonalMatrix[currentDiagonalElement][currentDiagonalElement] = floatElementDiagonal;
+
+        }
+
+
+        return floatDiagonalMatrix;
+
+    }
+
+    public static Boolean[][] createBooleanDiagonalMatrix(int dimensionOrder,
+                                                          Boolean booleanElementDiagonal) {
+
+        Boolean[][] booleanDiagonalMatrix = new Boolean[dimensionOrder][dimensionOrder];
+
+        for(int currentDiagonalElement = 0; currentDiagonalElement < dimensionOrder; currentDiagonalElement++) {
+
+            booleanDiagonalMatrix[currentDiagonalElement][currentDiagonalElement] = booleanElementDiagonal;
+
+        }
+
+
+        return booleanDiagonalMatrix;
+
+    }
+
+    public static ComplexNumber[][] createComplexNumberDiagonalMatrix(int dimensionOrder,
+                                                                      ComplexNumber complexNumberElementDiagonal) {
+
+        ComplexNumber[][] complexNumberDiagonalMatrix = new ComplexNumber[dimensionOrder][dimensionOrder];
+
+        for(int currentRow = 0; currentRow < dimensionOrder; currentRow++) {
+
+            for(int currentColumn = 0; currentColumn < dimensionOrder; currentColumn++) {
+
+                if(currentRow == currentColumn) {
+
+                    complexNumberDiagonalMatrix[currentRow][currentColumn] = complexNumberElementDiagonal;
+
+                }
+                else {
+
+                    complexNumberDiagonalMatrix[currentRow][currentColumn] = ComplexNumber.real_zero_img_zero;
+
+                }
+
+            }
+
+        }
+
+
+        return complexNumberDiagonalMatrix;
+
+    }
+
+
     public static boolean isScalar(Object[][] matrix) {
 
         return ( ( matrix.length == 1 ) && ( matrix[0].length == 1 ) );
