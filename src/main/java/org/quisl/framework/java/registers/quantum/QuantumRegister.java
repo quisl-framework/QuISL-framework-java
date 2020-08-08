@@ -1,6 +1,7 @@
 package org.quisl.framework.java.registers.quantum;
 
 import org.quisl.framework.java.registers.Register;
+import org.quisl.framework.java.registers.common.RegisterUnitPrefixes;
 import org.quisl.framework.java.units.computing.quantum.binary.qubits.Qubit;
 
 import java.util.ArrayList;
@@ -14,9 +15,10 @@ public class QuantumRegister extends Register {
 
     public QuantumRegister(Long id, Integer numQubits) {
 
-        super(id, "qu_reg" + id);
+        super( id, RegisterUnitPrefixes.QUANTUM_REGISTER_UNIT.getRegisterUnitCharacter(),
+             ( "qu-reg-" + id ), numQubits );
 
-        this.qubits = new ArrayList<>();
+        this.qubits = new ArrayList<>(numQubits);
 
         this.addQubits(numQubits);
 
@@ -24,9 +26,10 @@ public class QuantumRegister extends Register {
 
     public QuantumRegister(Long id, String quantumRegisterName, Integer numQubits) {
 
-        super(id, quantumRegisterName);
+        super( id, RegisterUnitPrefixes.QUANTUM_REGISTER_UNIT.getRegisterUnitCharacter(),
+               quantumRegisterName, numQubits );
 
-        this.qubits = new ArrayList<>();
+        this.qubits = new ArrayList<>(numQubits);
 
         this.addQubits(numQubits);
 

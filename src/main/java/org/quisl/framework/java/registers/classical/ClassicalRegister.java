@@ -1,94 +1,61 @@
 package org.quisl.framework.java.registers.classical;
 
-import org.quisl.framework.java.math.complex.ComplexNumber;
 import org.quisl.framework.java.registers.Register;
+import org.quisl.framework.java.registers.common.RegisterUnitPrefixes;
 import org.quisl.framework.java.units.computing.classical.binary.deterministic.bits.Bit;
-import org.quisl.framework.java.units.computing.quantum.binary.qubits.Qubit;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class ClassicalRegister extends Register {
 
-    private Bit[] bits;
-
-    private float[] bitsProbabilities;
+    private List<Bit> bits;
 
 
-    public ClassicalRegister(Long id) {
+    public ClassicalRegister(Long id, Integer numBits) {
 
-        super(id, "cl_reg" + id);
+        super( id, RegisterUnitPrefixes.CLASSICAL_REGISTER_UNIT.getRegisterUnitCharacter(),
+             ( "cl-reg-" + id ), numBits );
 
-        this.setup("|0⟩", "|1⟩");
+        this.bits = new ArrayList<>(numBits);
 
-    }
-
-    public ClassicalRegister(Long id, String stateNameBitNum1, String stateNameBitNum2) {
-
-        super(id, "cl_reg" + id);
-
-        this.setup(stateNameBitNum1, stateNameBitNum2);
+        this.addBits(numBits);
 
     }
 
-    public ClassicalRegister(Long id, String classicalRegisterName, String stateNameBitNum1, String stateNameBitNum2) {
+    public ClassicalRegister(Long id, String classicalRegisterName, Integer numBits) {
 
-        super(id, classicalRegisterName);
+        super( id, RegisterUnitPrefixes.CLASSICAL_REGISTER_UNIT.getRegisterUnitCharacter(),
+               classicalRegisterName, numBits );
 
-        this.setup(stateNameBitNum1, stateNameBitNum2);
+        this.bits = new ArrayList<>(numBits);
 
-    }
-
-    private void setup(String stateNameBitNum1, String stateNameBitNum2) {
-
-        this.setupBits(stateNameBitNum1, stateNameBitNum2);
-        this.setupBitsProbabilities();
+        this.addBits(numBits);
 
     }
 
-    private void setupBits(String stateNameBitNum1, String stateNameBitNum2) {
+    public void addBits(Integer numBits) {
 
-        this.bits = new Bit[2];
+        for(Long currentBit = 0L; currentBit < numBits; currentBit++) {
 
-        this.bits[0] = new Bit(1L, Bit.ZERO_STATE, stateNameBitNum1);
-        this.bits[1] = new Bit(2L, Bit.ONE_STATE, stateNameBitNum2);
+            Bit bit = new Bit(currentBit);
 
-    }
-
-    private void setupBitsProbabilities() {
-
-        this.bitsProbabilities = new float[2];
-
-        this.bitsProbabilities[Bit.ZERO_STATE] = 1.0f;
-        this.bitsProbabilities[Bit.ONE_STATE] = 0.0f;
-
-    }
-
-    public Bit[] getBits() {
-        return this.bits;
-    }
-
-    public void setBits(Bit[] bits) {
-        this.bits = bits;
-    }
-
-    public float[] getBitsProbabilities() {
-        return this.bitsProbabilities;
-    }
-
-    public void setBitsProbabilities(float[] bitsProbabilities) {
-        this.bitsProbabilities = bitsProbabilities;
-    }
-
-    public void retrieveMeasurement(Qubit qubit) {
-
-        if ( qubit.isMeasurementPerformed() ) {
-
-            ComplexNumber[] qubitAmplitudes = qubit.getAmplitudes();
-
-            this.bitsProbabilities[0] = (float) Math.pow(qubitAmplitudes[0].modulus(), 2.0);
-            this.bitsProbabilities[1] = (float) Math.pow(qubitAmplitudes[1].modulus(), 2.0);
+            this.bits.add(bit);
 
         }
+
+    }
+
+    public List<Bit> getBits() {
+
+        return this.bits;
+
+    }
+
+    public void setBits(List<Bit> bits) {
+
+        this.bits = bits;
 
     }
 
@@ -96,42 +63,34 @@ public class ClassicalRegister extends Register {
     public boolean equals(Object o) {
 
         if (this == o) {
+
             return true;
+
         }
 
         if (o == null || getClass() != o.getClass()) {
+
             return false;
+
         }
 
         if (!super.equals(o)) {
+
             return false;
+
         }
 
         ClassicalRegister that = (ClassicalRegister) o;
 
-        return Arrays.equals(bits, that.bits) &&
-               Arrays.equals(bitsProbabilities, that.bitsProbabilities);
+        return Objects.equals(this.bits, that.bits);
 
     }
 
     @Override
     public int hashCode() {
 
-        int result = super.hashCode();
-
-        result = 31 * result + Arrays.hashCode(bits);
-
-        result = 31 * result + Arrays.hashCode(bitsProbabilities);
-
-        return result;
+        return Objects.hash(super.hashCode(), this.bits);
 
     }
 
-    @Override
-    public String toString() {
-        return "ClassicalRegister{" +
-                "bits=" + Arrays.toString(bits) +
-                ", bitsProbabilities=" + Arrays.toString(bitsProbabilities) +
-                '}';
-    }
 }
