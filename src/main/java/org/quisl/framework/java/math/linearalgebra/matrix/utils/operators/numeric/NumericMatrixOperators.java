@@ -1521,7 +1521,538 @@ public class NumericMatrixOperators extends MatrixUtils {
     }
 
 
-    // TODO - Invert Matrix
+    public static Integer[][] computeInverseIntegerMatrix(Integer[][] originalIntegerMatrix) {
+
+        if( !isValidMatrix(originalIntegerMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(originalIntegerMatrix);
+        int numColumns = getNumColumns(originalIntegerMatrix);
+
+        if( numRows != numColumns ) {
+
+            return null;
+
+        }
+
+
+        Integer[][] invertedIntegerMatrix = createIntegerIdentityMatrix(numRows);
+
+        for (int currentRow = 0; currentRow < numRows; ++currentRow) {
+
+            findPivotAndSwapRowIntegerMatrix(currentRow, originalIntegerMatrix, invertedIntegerMatrix, numRows);
+            sweepByGaussJordanEliminationIntegerMatrix(currentRow, originalIntegerMatrix, invertedIntegerMatrix, numRows);
+
+        }
+
+        return invertedIntegerMatrix;
+
+    }
+
+    public static Double[][] computeInverseDoubleMatrix(Double[][] originalDoubleMatrix) {
+
+        if( !isValidMatrix(originalDoubleMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(originalDoubleMatrix);
+        int numColumns = getNumColumns(originalDoubleMatrix);
+
+        if( numRows != numColumns ) {
+
+            return null;
+
+        }
+
+
+        Double[][] invertedDoubleMatrix = createDoubleIdentityMatrix(numRows);
+
+        for (int currentRow = 0; currentRow < numRows; ++currentRow) {
+
+            findPivotAndSwapRowDoubleMatrix(currentRow, originalDoubleMatrix, invertedDoubleMatrix, numRows);
+            sweepByGaussJordanEliminationDoubleMatrix(currentRow, originalDoubleMatrix, invertedDoubleMatrix, numRows);
+
+        }
+
+
+        return invertedDoubleMatrix;
+
+    }
+
+    public static Float[][] computeInverseFloatMatrix(Float[][] originalFloatMatrix) {
+
+        if( !isValidMatrix(originalFloatMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(originalFloatMatrix);
+        int numColumns = getNumColumns(originalFloatMatrix);
+
+        if( numRows != numColumns ) {
+
+            return null;
+
+        }
+
+
+        Float[][] invertedFloatMatrix = createFloatIdentityMatrix(numRows);
+
+        for (int currentRow = 0; currentRow < numRows; ++currentRow) {
+
+            findPivotAndSwapRowFloatMatrix(currentRow, originalFloatMatrix, invertedFloatMatrix, numRows);
+            sweepByGaussJordanEliminationFloatMatrix(currentRow, originalFloatMatrix, invertedFloatMatrix, numRows);
+
+        }
+
+        return invertedFloatMatrix;
+
+    }
+
+    public static ComplexNumber[][] computeInverseComplexNumberMatrix
+            (
+                    ComplexNumber[][] originalComplexNumberMatrix
+            )
+    {
+
+        if( !isValidMatrix(originalComplexNumberMatrix) ) {
+
+            return null;
+
+        }
+
+
+        int numRows = getNumRows(originalComplexNumberMatrix);
+        int numColumns = getNumColumns(originalComplexNumberMatrix);
+
+        if( numRows != numColumns ) {
+
+            return null;
+
+        }
+
+
+        ComplexNumber[][] invertedComplexNumberMatrix = createComplexNumberIdentityMatrix(numRows);
+
+        for (int currentRow = 0; currentRow < numRows; ++currentRow) {
+
+            findPivotAndSwapRowComplexNumberMatrix(currentRow, originalComplexNumberMatrix,
+                                                   invertedComplexNumberMatrix, numRows);
+            sweepByGaussJordanEliminationComplexNumberMatrix(currentRow, originalComplexNumberMatrix,
+                                                             invertedComplexNumberMatrix, numRows);
+
+        }
+
+        return invertedComplexNumberMatrix;
+
+    }
+
+
+    private static void findPivotAndSwapRowIntegerMatrix
+            (
+                    final int numRow,
+                    final Integer[][] integerMatrixNum1,
+                    final Integer[][] integerMatrixNum2,
+                    final int sizeOfSquaredMatrix
+            )
+
+    {
+
+        int pivotIndex = numRow;
+        int pivotValue = Math.abs(integerMatrixNum1[numRow][numRow]);
+
+        for(int currentColumn = ( numRow + 1 ); currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+            if(pivotValue < Math.abs(integerMatrixNum1[currentColumn][numRow])) {
+
+                pivotIndex = currentColumn;
+                pivotValue = Math.abs(integerMatrixNum1[currentColumn][numRow]);
+
+            }
+
+        }
+
+
+        if(pivotIndex != numRow) {
+
+            for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                final Integer temporaryValueFromIntegerMatrixNum1 = integerMatrixNum1[pivotIndex][currentColumn];
+
+                integerMatrixNum1[pivotIndex][currentColumn] = integerMatrixNum1[numRow][currentColumn];
+                integerMatrixNum1[numRow][currentColumn] = temporaryValueFromIntegerMatrixNum1;
+
+
+                final Integer temporaryValueFromIntegerMatrixNum2 = integerMatrixNum2[pivotIndex][currentColumn];
+
+                integerMatrixNum2[pivotIndex][currentColumn] = integerMatrixNum2[numRow][currentColumn];
+                integerMatrixNum2[numRow][currentColumn] = temporaryValueFromIntegerMatrixNum2;
+
+            }
+
+        }
+
+    }
+
+    private static void findPivotAndSwapRowDoubleMatrix
+            (
+                    final int numRow,
+                    final Double[][] doubleMatrixNum1,
+                    final Double[][] doubleMatrixNum2,
+                    final int sizeOfSquaredMatrix
+            )
+
+    {
+
+        int pivotIndex = numRow;
+        double pivotValue = Math.abs(doubleMatrixNum1[numRow][numRow]);
+
+        for(int currentColumn = ( numRow + 1 ); currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+            if(pivotValue < Math.abs(doubleMatrixNum1[currentColumn][numRow])) {
+
+                pivotIndex = currentColumn;
+                pivotValue = Math.abs(doubleMatrixNum1[currentColumn][numRow]);
+
+            }
+
+        }
+
+
+        if(pivotIndex != numRow) {
+
+            for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                final Double temporaryValueFromDoubleMatrixNum1 = doubleMatrixNum1[pivotIndex][currentColumn];
+
+                doubleMatrixNum1[pivotIndex][currentColumn] = doubleMatrixNum1[numRow][currentColumn];
+                doubleMatrixNum1[numRow][currentColumn] = temporaryValueFromDoubleMatrixNum1;
+
+
+                final Double temporaryValueFromDoubleMatrixNum2 = doubleMatrixNum2[pivotIndex][currentColumn];
+
+                doubleMatrixNum2[pivotIndex][currentColumn] = doubleMatrixNum2[numRow][currentColumn];
+                doubleMatrixNum2[numRow][currentColumn] = temporaryValueFromDoubleMatrixNum2;
+
+            }
+
+        }
+
+    }
+
+    private static void findPivotAndSwapRowFloatMatrix
+            (
+                    final int numRow,
+                    final Float[][] floatMatrixNum1,
+                    final Float[][] floatMatrixNum2,
+                    final int sizeOfSquaredMatrix
+            )
+
+    {
+
+        int pivotIndex = numRow;
+        float pivotValue = Math.abs(floatMatrixNum1[numRow][numRow]);
+
+        for(int currentColumn = ( numRow + 1 ); currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+            if(pivotValue < Math.abs(floatMatrixNum1[currentColumn][numRow])) {
+
+                pivotIndex = currentColumn;
+                pivotValue = Math.abs(floatMatrixNum1[currentColumn][numRow]);
+
+            }
+
+        }
+
+
+        if(pivotIndex != numRow) {
+
+            for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                final Float temporaryValueFromFloatMatrixNum1 = floatMatrixNum1[pivotIndex][currentColumn];
+
+                floatMatrixNum1[pivotIndex][currentColumn] = floatMatrixNum1[numRow][currentColumn];
+                floatMatrixNum1[numRow][currentColumn] = temporaryValueFromFloatMatrixNum1;
+
+
+                final Float temporaryValueFromFloatMatrixNum2 = floatMatrixNum2[pivotIndex][currentColumn];
+
+                floatMatrixNum2[pivotIndex][currentColumn] = floatMatrixNum2[numRow][currentColumn];
+                floatMatrixNum2[numRow][currentColumn] = temporaryValueFromFloatMatrixNum2;
+
+            }
+
+        }
+
+    }
+
+    private static void findPivotAndSwapRowComplexNumberMatrix
+            (
+                    final int numRow,
+                    final ComplexNumber[][] complexNumberMatrixNum1,
+                    final ComplexNumber[][] complexNumberMatrixNum2,
+                    final int sizeOfSquaredMatrix
+            )
+
+    {
+
+        int pivotIndex = numRow;
+        double pivotValue = complexNumberMatrixNum1[numRow][numRow].modulus();
+
+        for(int currentColumn = ( numRow + 1 ); currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+            if(pivotValue < complexNumberMatrixNum1[currentColumn][numRow].modulus()) {
+
+                pivotIndex = currentColumn;
+                pivotValue = complexNumberMatrixNum1[currentColumn][numRow].modulus();
+
+            }
+
+        }
+
+
+        if(pivotIndex != numRow) {
+
+            for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                final ComplexNumber temporaryValueFromFloatMatrixNum1 =
+                            complexNumberMatrixNum1[pivotIndex][currentColumn];
+
+                complexNumberMatrixNum1[pivotIndex][currentColumn] = complexNumberMatrixNum1[numRow][currentColumn];
+                complexNumberMatrixNum1[numRow][currentColumn] = temporaryValueFromFloatMatrixNum1;
+
+
+                final ComplexNumber temporaryValueFromFloatMatrixNum2 =
+                            complexNumberMatrixNum2[pivotIndex][currentColumn];
+
+                complexNumberMatrixNum2[pivotIndex][currentColumn] = complexNumberMatrixNum2[numRow][currentColumn];
+                complexNumberMatrixNum2[numRow][currentColumn] = temporaryValueFromFloatMatrixNum2;
+
+            }
+
+        }
+
+    }
+
+
+
+    private static void sweepByGaussJordanEliminationIntegerMatrix
+            (
+                    final int numRow,
+                    final Integer[][] integerMatrixNum1,
+                    final Integer[][] integerMatrixNum2,
+                    final int sizeOfSquaredMatrix
+            )
+    {
+
+        Integer pivotValue = integerMatrixNum1[numRow][numRow];
+
+        if(pivotValue != 0) {
+
+            for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                integerMatrixNum1[numRow][currentColumn] /= pivotValue;
+                integerMatrixNum2[numRow][currentColumn] /= pivotValue;
+
+            }
+
+            for(int currentRow = 0; currentRow < sizeOfSquaredMatrix; currentRow++) {
+
+                Integer sweepTargetValue = integerMatrixNum1[currentRow][numRow];
+
+                if(currentRow != numRow) {
+
+                    for(int currentColumn = numRow; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                        integerMatrixNum1[currentRow][currentColumn] -=
+                                ( sweepTargetValue * integerMatrixNum1[numRow][currentColumn] );
+
+                    }
+
+                    for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                        integerMatrixNum2[currentRow][currentColumn] -=
+                                ( sweepTargetValue * integerMatrixNum2[numRow][currentColumn] );
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    private static void sweepByGaussJordanEliminationDoubleMatrix
+            (
+                    final int numRow,
+                    final Double[][] doubleMatrixNum1,
+                    final Double[][] doubleMatrixNum2,
+                    final int sizeOfSquaredMatrix
+            )
+    {
+
+        Double pivotValue = doubleMatrixNum1[numRow][numRow];
+
+        if(pivotValue != 0) {
+
+            for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                doubleMatrixNum1[numRow][currentColumn] /= pivotValue;
+                doubleMatrixNum2[numRow][currentColumn] /= pivotValue;
+
+            }
+
+            for(int currentRow = 0; currentRow < sizeOfSquaredMatrix; currentRow++) {
+
+
+                Double sweepTargetValue = doubleMatrixNum1[currentRow][numRow];
+
+                if(currentRow != numRow) {
+
+                    for(int currentColumn = numRow; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                        doubleMatrixNum1[currentRow][currentColumn] -=
+                                ( sweepTargetValue * doubleMatrixNum1[numRow][currentColumn] );
+
+                    }
+
+
+                    for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                        doubleMatrixNum2[currentRow][currentColumn] -=
+                                ( sweepTargetValue * doubleMatrixNum2[numRow][currentColumn] );
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    private static void sweepByGaussJordanEliminationFloatMatrix
+            (
+                    final int numRow,
+                    final Float[][] floatMatrixNum1,
+                    final Float[][] floatMatrixNum2,
+                    final int sizeOfSquaredMatrix
+            )
+    {
+
+        Float pivotValue = floatMatrixNum1[numRow][numRow];
+
+        if(pivotValue != 0) {
+
+            for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                floatMatrixNum1[numRow][currentColumn] /= pivotValue;
+                floatMatrixNum2[numRow][currentColumn] /= pivotValue;
+
+            }
+
+            for(int currentRow = 0; currentRow < sizeOfSquaredMatrix; currentRow++) {
+
+
+                Float sweepTargetValue = floatMatrixNum1[currentRow][numRow];
+
+                if(currentRow != numRow) {
+
+                    for(int currentColumn = numRow; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                        floatMatrixNum1[currentRow][currentColumn] -=
+                                ( sweepTargetValue * floatMatrixNum1[numRow][currentColumn] );
+
+                    }
+
+
+                    for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                        floatMatrixNum2[currentRow][currentColumn] -=
+                                ( sweepTargetValue * floatMatrixNum2[numRow][currentColumn] );
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    @SuppressWarnings("all")
+    private static void sweepByGaussJordanEliminationComplexNumberMatrix
+            (
+                    final int numRow,
+                    final ComplexNumber[][] complexNumberMatrixNum1,
+                    final ComplexNumber[][] complexNumberMatrixNum2,
+                    final int sizeOfSquaredMatrix
+            )
+    {
+
+        ComplexNumber pivotValue = complexNumberMatrixNum1[numRow][numRow];
+
+        if( !pivotValue.equals(ComplexNumber.real_zero_img_zero) ) {
+
+            for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                complexNumberMatrixNum1[numRow][currentColumn].divide(pivotValue);
+                complexNumberMatrixNum2[numRow][currentColumn].divide(pivotValue);
+
+            }
+
+            for(int currentRow = 0; currentRow < sizeOfSquaredMatrix; currentRow++) {
+
+
+                ComplexNumber sweepTargetValue = complexNumberMatrixNum1[currentRow][numRow];
+
+                if(currentRow != numRow) {
+
+                    for(int currentColumn = numRow; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                        ComplexNumber sweepTargetValueTemporaryComplexNumber = sweepTargetValue;
+
+                        sweepTargetValueTemporaryComplexNumber
+                                    .multiply(complexNumberMatrixNum1[numRow][currentColumn]);
+
+                        complexNumberMatrixNum1[currentRow][currentColumn]
+                                    .subtract(sweepTargetValueTemporaryComplexNumber);
+
+                    }
+
+
+                    for(int currentColumn = 0; currentColumn < sizeOfSquaredMatrix; ++currentColumn) {
+
+                        ComplexNumber sweepTargetValueTemporaryComplexNumber = sweepTargetValue;
+
+                        sweepTargetValueTemporaryComplexNumber
+                                .multiply(complexNumberMatrixNum2[numRow][currentColumn]);
+
+                        complexNumberMatrixNum2[currentRow][currentColumn]
+                                .subtract(sweepTargetValueTemporaryComplexNumber);
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
 
 
     public static ComplexNumber[][] computeConjugateMatrix(ComplexNumber[][] originalMatrix) {
