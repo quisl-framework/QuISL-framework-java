@@ -9,9 +9,9 @@ public class Bit {
 
     private Long id;
 
-    private int state;
+    private Integer state;
 
-    private String stateName;
+    private final String stateName;
 
 
     public Bit(Long id, Integer state, String stateName) {
@@ -40,12 +40,35 @@ public class Bit {
         this.id = id;
     }
 
-    public int getState() {
+    public Integer getStateInBinary() {
         return this.state;
     }
 
-    public void setState(int state) {
+    public Boolean getStateInBoolean() {
+
+        if( ( this.state != 0 ) && ( this.state != 1 ) ) {
+
+            return null;
+
+        }
+        else {
+
+            return this.state != 0;
+
+        }
+
+    }
+
+    public void setStateInBinary(Integer state) {
+
         this.state = state;
+
+    }
+
+    public void setStateInBoolean(Boolean state) {
+
+        this.state = ( state ) ? 1 : 0;
+
     }
 
     @Override
