@@ -8,10 +8,6 @@ public class NOTLogicExpressionOperator extends ClassicalLogicExpressionOperator
 
     private Boolean output;
 
-    public NOTLogicExpressionOperator() {
-
-    }
-
     public NOTLogicExpressionOperator(Boolean input) {
 
         this.input = input;
