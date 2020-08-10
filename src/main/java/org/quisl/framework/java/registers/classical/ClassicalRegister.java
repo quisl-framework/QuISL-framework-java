@@ -4,13 +4,13 @@ import org.quisl.framework.java.registers.Register;
 import org.quisl.framework.java.registers.common.RegisterUnitPrefixes;
 import org.quisl.framework.java.units.computing.classical.binary.deterministic.bits.Bit;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ClassicalRegister extends Register {
 
-    private List<Bit> bits;
+    private Map<Long, Bit> bits;
 
 
     public ClassicalRegister(Long id, Integer numBits) {
@@ -18,7 +18,7 @@ public class ClassicalRegister extends Register {
         super( id, RegisterUnitPrefixes.CLASSICAL_REGISTER_UNIT.getRegisterUnitCharacter(),
              ( "cl-reg-" + id ), numBits );
 
-        this.bits = new ArrayList<>(numBits);
+        this.bits = new ConcurrentHashMap<>(numBits);
 
         this.addBits(numBits);
 
@@ -29,7 +29,7 @@ public class ClassicalRegister extends Register {
         super( id, RegisterUnitPrefixes.CLASSICAL_REGISTER_UNIT.getRegisterUnitCharacter(),
                classicalRegisterName, numBits );
 
-        this.bits = new ArrayList<>(numBits);
+        this.bits = new ConcurrentHashMap<>(numBits);
 
         this.addBits(numBits);
 
@@ -41,19 +41,19 @@ public class ClassicalRegister extends Register {
 
             Bit bit = new Bit(currentBit);
 
-            this.bits.add(bit);
+            this.bits.put(bit.getId(), bit);
 
         }
 
     }
 
-    public List<Bit> getBits() {
+    public Map<Long, Bit> getBits() {
 
         return this.bits;
 
     }
 
-    public void setBits(List<Bit> bits) {
+    public void setBits(Map<Long, Bit> bits) {
 
         this.bits = bits;
 
