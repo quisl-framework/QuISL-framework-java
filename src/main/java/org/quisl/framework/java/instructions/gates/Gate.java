@@ -2,13 +2,13 @@ package org.quisl.framework.java.instructions.gates;
 
 public abstract class Gate {
 
-    private Integer numInputs;
+    private final Integer numInputs;
 
-    private Integer numOutputs;
+    private final Integer numOutputs;
 
-    private String prefix;
+    private final String prefix;
 
-    private String gateName;
+    private final String gateName;
 
 
     public Gate(Integer numInputs, Integer numOutputs,
@@ -46,5 +46,7 @@ public abstract class Gate {
         return this.gateName;
 
     }
+
+    public abstract void applyGate();
 
 }
