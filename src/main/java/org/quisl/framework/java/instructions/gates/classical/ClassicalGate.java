@@ -3,7 +3,7 @@ package org.quisl.framework.java.instructions.gates.classical;
 import org.quisl.framework.java.common.ComputingPrefixes;
 import org.quisl.framework.java.instructions.gates.Gate;
 
-public class ClassicalGate extends Gate {
+public abstract class ClassicalGate extends Gate {
 
     public ClassicalGate(Integer numInputs, Integer numOutputs, String gateName) {
 
@@ -17,5 +17,11 @@ public class ClassicalGate extends Gate {
         // Empty Method
 
     }
+
+    public abstract String[] getLabelsTruthTable();
+
+    public abstract Integer[][] getIntegerTruthTable();
+
+    public abstract Boolean[][] getBooleanTruthTable();
 
 }
