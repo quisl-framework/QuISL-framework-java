@@ -1,5 +1,6 @@
 package org.quisl.framework.java.instructions.operators.quantum;
 
+import org.quisl.framework.java.common.ComputingPrefixes;
 import org.quisl.framework.java.instructions.operators.Operator;
 import org.quisl.framework.java.math.complex.ComplexNumber;
 import org.quisl.framework.java.units.computing.quantum.binary.qubits.Qubit;
@@ -17,7 +18,7 @@ public abstract class QuantumOperator extends Operator {
     public QuantumOperator(Long quantumOperatorId, Integer numQubits, Qubit[] qubits,
                            ComplexNumber[][] quantumOperatorMatrix) {
 
-        super(quantumOperatorId);
+        super(quantumOperatorId, ComputingPrefixes.QUANTUM_PREFIX.getComputingPrefix());
 
         this.numQubits = numQubits;
         this.qubits = qubits;
