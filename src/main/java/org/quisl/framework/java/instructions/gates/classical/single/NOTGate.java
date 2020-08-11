@@ -62,14 +62,15 @@ public class NOTGate extends ClassicalGate {
 
     }
 
-
-    public static String[] getLabelsNOTTruthTable() {
+    @Override
+    public String[] getLabelsTruthTable() {
 
         return new String[] { "Input", "Output" };
 
     }
 
-    public static Integer[][] getIntegerNOTTruthTable() {
+    @Override
+    public Integer[][] getIntegerTruthTable() {
 
         return new Integer[][]
                 {
@@ -79,7 +80,8 @@ public class NOTGate extends ClassicalGate {
 
     }
 
-    public static Boolean[][] getBooleanNOTTruthTable() {
+    @Override
+    public Boolean[][] getBooleanTruthTable() {
 
         return new Boolean[][]
                 {
