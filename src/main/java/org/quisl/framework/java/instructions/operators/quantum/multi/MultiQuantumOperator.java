@@ -8,9 +8,9 @@ public abstract class MultiQuantumOperator extends QuantumOperator {
 
     private ComplexNumber[] qubitProductAmplitudes;
 
-    public MultiQuantumOperator(Integer numQubits, Qubit[] qubits, ComplexNumber[][] quantumOperatorMatrix) {
+    public MultiQuantumOperator(Long quantumOperatorId, Integer numQubits, Qubit[] qubits, ComplexNumber[][] quantumOperatorMatrix) {
 
-        super(numQubits, qubits, quantumOperatorMatrix);
+        super(quantumOperatorId, numQubits, qubits, quantumOperatorMatrix);
 
     }
 
